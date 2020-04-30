@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>代理管理</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <!-- <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/icon.css"> -->
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_commoninfo_b.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body>
+    <!-- 工具栏 -->
+    <div id="proxy_toolbar" class="flex_toolbar">
+        <form>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>代理名称:</label><input type="text" class="easyui-textbox md_width">
+                </div>
+                <div class="col_item">
+                    <label>代理IP/端口:</label><input type="text" class="easyui-textbox sm_width">
+                </div>
+                <div class="col_item">
+                    <label>是否有效:</label><select class="easyui-combobox xs_width" data-options="panelHeight:'auto'">
+                        <option value="0">--请选择--</option>
+                        <option value="1">是</option>
+                        <option value="2">否</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                        data-options="iconCls:'icon-search-primary'">查询</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-add'"
+                        onclick="openWin('./proxyCfgWin.html','新建代理', {autoSize:true})">新建</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-edit'"
+                        onclick="openWin('./proxyCfgWin.html','修改代理', {autoSize:true})">修改</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-cancel'">删除</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-export'">导出</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- 工具栏 end -->
+    <table id="proxyTable"></table>
+
+    <script>
+        $(function () {
+            // data-grid init
+            $('#proxyTable').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fitColumn: true,
+                fit: true,
+                pagination: true,
+                toolbar: '#proxy_toolbar',
+                columns: [[
+                    { field: 'taskname',sortable: true,width:250,title: '代理名称' },
+                    { field: 'taskid', sortable: true,width:250,title: '代理IP' },
+                    { field: 'opt', align: 'center',width:100,title: '代理端口' },
+                    { field: 'emg', align: 'center', width: 100, title: '代理用户名' },
+                    { field: 'status', align: 'center', width: 100, title: '代理类型' },
+                    { field: 'status', align: 'center', width: 100, title: '是否有效' },
+                    { field: 'status', align: 'center', width: 100, title: '数据类型' },
+                    { field: 'approval', align: 'center', sortable: true,title: '创建人' },
+                    { field: 'starttime', sortable: true,title: '创建时间' },
+                    { field: 'endtime', sortable: true,title: '最近修改时间' }
+                ]]
+            });
+        });
+    </script>
+
+</body>
+
+</html>

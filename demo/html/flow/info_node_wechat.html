@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>信息处理节点/业务配置/微信</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body id="result_wechat" class="info_node panel_content flex_page flex_col">
+    <div class="form_row">
+        <div class="col_item">
+            <label><span class="requireTag">消息类型:</span></label>
+        </div>
+        <div class="col_item">
+            <label><input type="radio" name="msgType" value="common" id="msgType_01" checked>普通消息</label>
+            <label><input type="radio" name="msgType" value="templ" id="msgType_02">模版消息</label>
+            <label><input type="radio" name="msgType" value="pic" id="msgType_03">图文消息</label>
+        </div>
+    </div>
+    <div class="form_row wechat_mode">
+        <iframe src="info_node_wechat_common.html" frameborder="0" class="row_ifr"></iframe>
+    </div>
+
+    <script>
+        $(':radio').on('change', function(e) {
+            if ($(this).prop('checked')) {
+                $('iframe').attr('src', 'info_node_wechat_' + $(this).attr('value') + '.html');
+            }
+        });
+    </script>
+</body>
+
+
+
+
+</html>

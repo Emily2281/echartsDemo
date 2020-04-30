@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程 / 报表节点</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- 流程部分的UI类JS -->
+    <script src="../../common/js/my_flow.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+</head>
+
+<body>
+    <div class="easyui-tabs" data-options="fit:true">
+        <!-- =================== 业务配置 =================== -->
+        <div title="业务配置">
+            <div id="tb" class="flex_toolbar">
+                <form>
+                    <div class="form_row">
+                        <div class="col_item">
+                            <label><span class="requireTag">节点名称</span></label>
+                            <input type="text" class="easyui-textbox md_width">
+                        </div>
+                        <div class="col_item">
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm primary"
+                               data-options="iconCls:'icon-save'">保存</a>
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                               data-options="iconCls:'icon-add'" onclick="openCmdWin()">添加</a>
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                               data-options="iconCls:'icon-cancel'">删除</a>
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                               data-options="iconCls:'icon-reload'">刷新</a>
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                               data-options="iconCls:'icon-detail'">仪表盘配置</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <table id="dg"></table>
+        </div>
+
+    </div>
+
+    <script>
+        $(function () {
+            // datagrid init
+            $('#dg').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                toolbar: '#tb',
+                pagination: true,
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskid', sortable: true, width: '40%', title: '序号' },
+                    { field: 'taskname', sortable: true, width: '40%', title: '数据源名称' },
+                    { field: 'emg', sortable: true, width: '15%', title: '图像预览' },
+                ]],
+                onDblClickRow: openCmdWin
+            });
+        });
+
+        function openCmdWin() {
+            openWin('report_node_win.html', '添加配置', {max:true});
+        }
+    </script>
+</body>
+
+</html>

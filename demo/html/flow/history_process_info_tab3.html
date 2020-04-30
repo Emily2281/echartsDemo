@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程编辑器/流程运行日志/流程实例/流程节点信息/节点变量值</title>
+    <!-- libs -->
+    <!-- easyui material-teal样式 -->
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/datagrid-detailview.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/icon.css">
+
+    <script src="../../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../../frame/mtips/mtips.css">
+
+    <script src="../../../common/js/openWin.js"></script>
+
+    <!-- 自定义 stylesheet -->
+    <link rel="stylesheet" href="../../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="full_page_height">
+    <div class="cfg_box_group flex_row nodeVar_page">
+        <div class="cfg_box">
+            <table id="node_var_list"></table>
+        </div>
+        <div class="cfg_box">
+            <table id="node_var_detail" class="nodeVar_detail">
+                <tbody>
+                    <tr>
+                        <td>2017-10-04 01:15:00</td>
+                        <td>1206.616</td>
+                    </tr>
+                    <tr>
+                        <td>2017-10-04 01:15:00</td>
+                        <td>1206.616</td>
+                    </tr>
+                    <tr>
+                        <td>2017-10-04 01:15:00</td>
+                        <td>1206.616</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            // 节点变量列表
+            $('#node_var_list').datagrid({
+                rownumbers: false,
+                singleSelect: true,
+                url: '../../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                scrollbarSize: 0,
+                pagination: false,
+                columns: [[
+                    { field: 'taskname', width: '100%', title: '节点变量列表' },
+                ]],
+            });
+        })
+    </script>
+</body>
+
+</html>

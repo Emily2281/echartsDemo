@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SQL节点/业务配置/高级模式</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body>
+    <div class="cfg_box_group">
+        <div class="cfg_box left_box">
+            <div class="cfg_box_header">
+                <span class="title">消息内容</span>
+            </div>
+            <div class="cfg_box_content">
+                <textarea placeholder="SQL语句不需要使用分号作为结束符"></textarea>
+            </div>
+        </div>
+        <div class="var_select_box">
+            <div class="easyui-panel" title="变量选择" data-options="fit:true">
+                <div class="easyui-tabs" data-options="border:false">
+                    <div title="自定义变量">
+                        <div class="filter_bar">
+                            <div class="col_item">
+                                <input class="easyui-textbox md_width">
+                                <a href="javacript:;" class="easyui-linkbutton btn_sm">查询</a>
+                            </div>
+                            <i class="help help_mtips"
+                               data-mtips="支持变量引用,如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列;<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列。<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">?</i>
+                        </div>
+                        <div class="var_select_div">
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">agg_v1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">base_1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">非常长 very long</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">agg_v1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">base_1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">非常长 very long</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">agg_v1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">base_1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">非常长 very long</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                        </div>
+                    </div>
+                    <div title="流程定义变量">
+                        <div class="filter_bar">
+                            <div class="col_item">
+                                <input class="easyui-textbox md_width">
+                                <a href="javacript:;" class="easyui-linkbutton btn_sm">查询</a>
+                            </div>
+                            <i class="help help_mtips"
+                               data-mtips="支持变量引用,如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列;<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列。<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">?</i>
+                        </div>
+                        <div class="var_select_div">
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">agg_v1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">base_1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">非常长 very long</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">变量</a>
+                        </div>
+                    </div>
+                    <div title="系统内置变量">
+                        <div class="filter_bar">
+                            <div class="col_item">
+                                <input class="easyui-textbox md_width">
+                                <a href="javacript:;" class="easyui-linkbutton btn_sm">查询</a>
+                            </div>
+                            <i class="help help_mtips"
+                               data-mtips="支持变量引用,如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列;<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列。<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">?</i>
+                        </div>
+                        <div class="var_select_div">
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">agg_v1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">base_1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                               data-options="iconCls:'icon-script'">非常长 very long</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    </script>
+</body>
+
+
+
+
+</html>

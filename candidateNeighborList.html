@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>候选邻区列表TOP5</title>
+    <!-- easyui js 文件 -->
+    <script src="Frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="Frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="Frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+
+    <link rel="stylesheet" href="Frame/BeAlert-master/BeAlert.css">
+    <script src="Frame/BeAlert-master/BeAlert.js"></script>
+    <script src="common/js/mask.js"></script>
+    <script src="common/js/public.js"></script>
+
+    <script src="js/candidateNeighborList.js"></script>
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="Frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="css/my.base.css">
+    <link rel="stylesheet" href="css/extra.css">
+</head>
+<body class="extra" style="height:calc(100vh - 10px)">
+    <form id="topForm"  action="" method="post">
+        <input type="hidden" id="confirmStatus">
+        <div id="topRow" ></div>
+        <div class="form_row" style="text-align: right;padding-right: 20px">
+            <a href="javascript:;" id="saveBtn" data-i18n-text="aisee.public.btn.save"
+               class="easyui-linkbutton btn_sm primary">保存</a>
+        </div>
+    </form>
+</body>
+</html>

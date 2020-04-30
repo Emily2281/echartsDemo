@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心 / 我的配置 / 流程展示配置</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/mask.js"></script>
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+    <!-- 拖拽 -->
+    <script type="text/javascript" src="../../common/js/datagrid-dnd.js"></script>
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="pc.css">
+</head>
+
+<body class="detail_cfg">
+    <div class="easyui-layout" data-options="fit:true">
+        <!-- 待分配字段 -->
+        <div title="待分配字段<span class='text_danger'> (未分配任何字段时，将默认展示所有字段) </span>"
+             data-options="region:'west',collapsible:false"
+             style="width:46%" class="tree-box">
+            <table></table>
+        </div>
+        <!-- buttons -->
+        <div data-options="region:'center',border:false">
+            <div class="operator">
+                <div class="operatorBtn">
+                    <button class="assignBtn toRight" title="分配已选字段"></button>
+                    <button class="assignBtn toLeft" title="删除已选字段"></button>
+                </div>
+            </div>
+        </div>
+        <!-- 已分配字段 -->
+        <div title="已分配字段<span class='text_danger'> (拖拽排序) </span>" data-options="region:'east',collapsible:false"
+             style="width:46%">
+            <table></table>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            MaskUtil.mask('加载中...');
+            $('table').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                pagination: false,
+                columns: [[
+                    { field: 'ck', checkbox: 'true' },
+                    { field: 'taskname', sortable: true, width: '160', title: '字段名称' },
+                    { field: 'taskid', sortable: true, width: '160', title: '字段对其方式' },
+                    { field: 'emg', align: 'center', sortable: true, width: '100', title: '字段宽度' },
+                    { field: 'init', align: 'center', sortable: true, width: '100', title: '字段排序方式' },
+                    { field: 'init', align: 'center', sortable: true, width: '100', title: '字段排序先后' },
+                    { field: 'status', align: 'center', sortable: true, width: '100', title: '搜索条件' },
+                ]],
+                onLoadSuccess: function () {
+                    $(this).datagrid('enableDnd');
+                    MaskUtil.unmask();
+                },
+                onDblClickRow: function (index, row) {
+                    openWin('cfgPc_win.html', '修改字段【' + row.taskname + '】',{autoSize:true,height:240});
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>邮箱管理</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <!-- <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/icon.css"> -->
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_commoninfo_b.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body>
+    <!-- 工具栏 -->
+    <div id="proxy_toolbar" class="flex_toolbar">
+        <form>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>邮件地址:</label><input type="text" class="easyui-textbox md_width">
+                </div>
+                <div class="col_item">
+                    <label>代理名称:</label><input type="text" class="easyui-textbox md_width">
+                </div>
+                <div class="col_item">
+                    <label>邮箱类型:</label><select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                        <option value="001" selected>全部</option>
+                        <option value="002">接收邮箱</option>
+                        <option value="003">发送邮箱</option>
+                        <option value="004">联系人</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                        data-options="iconCls:'icon-search-primary'">查询</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-add'"
+                        onclick="openWin('./mailInfoWin.html','新建邮箱',{width:2000,height:2000,autoSize:true})">新建</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-edit'"
+                        onclick="openWin('./mailInfoWin.html','修改邮箱',{autoSize:true})">修改</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-cancel'">删除</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-export'">导出</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- 工具栏 end -->
+    <table id="proxyTable"></table>
+
+    <script>
+        $(function () {
+            // data-grid init
+            $('#proxyTable').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fitColumn: true,
+                fit: true,
+                pagination: true,
+                toolbar: '#proxy_toolbar',
+                columns: [[
+                    { field: 'taskname', sortable: true,width:300,title: '邮箱地址' },
+                    { field: 'status', align: 'center', sortable: true,width:150,title: '邮箱类型' },
+                    { field: 'approval', align: 'center',width:200,title: '代理名称' },
+                    { field: 'emg', align: 'center', title: '发送协议类型' },
+                    { field: 'init', align: 'center', width: 200, title: '发送服务器地址' },
+                    { field: 'opt', align: 'center', width: 100, title: '发送端口' },
+                    { field: 'emg', align: 'center', title: '接收协议类型' },
+                    { field: 'init', align: 'center', width: 200, title: '接收服务器地址' },
+                    { field: 'opt', align: 'center', width: 100, title: '接收端口' },
+                    { field: 'init', align: 'center', title: '账号' },
+                    { field: 'opt2', align: 'center', width: 100, title: '数据类型' },
+                    { field: 'approval', align: 'center',width: 100, sortable: true,title: '创建人' },
+                    { field: 'starttime', sortable: true,title: '创建时间' },
+                    { field: 'approval', align: 'center',width: 100, sortable: true,title: '最近修改人' },
+                    { field: 'starttime', sortable: true,title: '最近修改时间' },
+                ]]
+            });
+        });
+    </script>
+
+</body>
+
+</html>

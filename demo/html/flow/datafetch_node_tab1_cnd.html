@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程 / 可视化操作模拟节点 / 业务配置 / 条件</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="datafetch_page">
+    <!-- 操作 -->
+    <div class="cfg_box_row">
+        <div class="col_item">
+            <label class="my_checkbox2 txtLeft"><input type="checkbox" checked>IF</label>
+        </div>
+        <div class="col_item">
+            <label><span class="requireTag">条件</span></label>
+            <input type="text" class="easyui-textbox lg_width">
+        </div>
+        <div class="col_item">
+            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+               data-options="iconCls:'icon-edit'"
+               onclick="openWin('control_cfg_logic.html','表示配置页面',{max:true})">修改</a>
+            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+               data-options="iconCls:'icon-clear'">清空</a>
+        </div>
+    </div>
+    <div class="cfg_box_row">
+        <div class="col_item">
+            <label class="my_checkbox2 txtLeft"><input type="checkbox">ELSE</label>
+        </div>
+    </div>
+    <div class="row_gutter_line"></div>
+    <div class="btn-row">
+        <a href="javascript:;" class="easyui-linkbutton primary" data-options="iconCls:'icon-save'">保存</a>
+    </div>
+
+    <script>
+        $(function() {
+            $.parser.parse();
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第三方接口管理 / 新建修改第三方接口</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_commoninfo_b.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body class="interfaceMgrWin">
+    <form class="my-win-form">
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">接口名称:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">接口类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="001" selected>webservice</option>
+                        <option value="002">restful</option>
+                        <option value="003">soap</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">接口URL:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>数据类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="001" selected>公有</option>
+                        <option value="002">私有</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">接口空间名:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'" >
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">接口方法名:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">超时时间(秒):</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="number" class="easyui-numberbox" data-options="width:'100%',min:0,max:9999" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="cfg_box">
+                <div class="cfg_box_header">
+                    <div class="col_item">
+                        <span class="title requireTag">返回结果样例</span>
+                    </div>
+                    <div class="col_item">
+                        <label class="requireTag">结果类型<select class="easyui-combobox sm_width"
+                                data-options="panelHeight:'auto'">
+                                <option value="xml" selected>xml</option>
+                            </select></label>
+                    </div>
+                </div>
+                <div class="cfg_box_content">
+                    <div class="cfg_box_row">
+                        <textarea placeholder="请输入返回结果样例"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="cfg_box">
+                <div class="cfg_box_header">
+                    <div class="col_item">
+                        <span class="title">接口请求体</span>
+                    </div>
+                    <div class="col_item">
+                        <div class="col_item">
+                            <a href="javascript:;" class="square-btn icon-add" onclick="addItem($(this))"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="cfg_box_content">
+                    <div class="cfg_box_row">
+                        <div class="col_item">
+                            <label class="requireTag">参数名称:<input type="text" class="easyui-textbox sm_width" required>
+                            </label>
+                        </div>
+                        <div class="col_item">
+                            <label class="requireTag">参数类型:<select class="easyui-combobox xs_width"
+                                    data-options="panelHeight:'auto'">
+                                    <option value="001" selected>字符</option>
+                                    <option value="002">数值</option>
+                                </select></label>
+                        </div>
+                        <div class="col_item">
+                            <label class="requireTag">参数默认值:<input type="text" class="easyui-textbox xs_width" required>
+                            </label>
+                        </div>
+                        <div class="col_item">
+                            <a href="javascript:;" class="square-btn minus" onclick="removeItem($(this))"></a>
+                        </div>
+                    </div>
+                    <div class="cfg_box_row">
+                        <div class="col_item">
+                            <label class="requireTag">参数名称:<input type="text" class="easyui-textbox sm_width" required>
+                            </label>
+                        </div>
+                        <div class="col_item">
+                            <label class="requireTag">参数类型:<select class="easyui-combobox xs_width"
+                                    data-options="panelHeight:'auto'">
+                                    <option value="001" selected>字符</option>
+                                    <option value="002">数值</option>
+                                </select></label>
+                        </div>
+                        <div class="col_item">
+                            <label class="requireTag">参数默认值:<input type="text" class="easyui-textbox xs_width" required>
+                            </label>
+                        </div>
+                        <div class="col_item">
+                            <a href="javascript:;" class="square-btn minus" onclick="removeItem($(this))"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="cfg_box">
+                <div class="cfg_box_header">
+                    <div class="col_item">
+                        <span class="title">接口参数</span>
+                    </div>
+                    <div class="col_item">
+                        <div class="col_item">
+                            <a href="javascript:;" class="square-btn icon-add" onclick="addItem($(this))"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="cfg_box_content">
+                    <div class="cfg_box_row">
+                        <div class="col_item">
+                            <label class="requireTag">参数名称:<input type="text" class="easyui-textbox sm_width" required>
+                            </label>
+                        </div>
+                        <div class="col_item">
+                            <label class="requireTag">参数类型:<select class="easyui-combobox xs_width"
+                                    data-options="panelHeight:'auto'">
+                                    <option value="001" selected>字符</option>
+                                    <option value="002">数值</option>
+                                </select></label>
+                        </div>
+                        <div class="col_item">
+                            <label class="requireTag">参数默认值:<input type="text" class="easyui-textbox xs_width" required>
+                            </label>
+                        </div>
+                        <div class="col_item">
+                            <a href="javascript:;" class="square-btn minus" onclick="removeItem($(this))"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="cfg_box">
+                <div class="cfg_box_header">
+                    <div class="col_item">
+                        <span class="title requireTag">请求体内容</span>
+                    </div>
+                    <div class="col_item">
+                        <label class="requireTag">结果类型<select class="easyui-combobox sm_width"
+                                data-options="panelHeight:'auto'">
+                                <option value="xml" selected>xml</option>
+                            </select></label>
+                    </div>
+                </div>
+                <div class="cfg_box_content">
+                    <div class="cfg_box_row">
+                        <textarea placeholder="请输入返回结果样例"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="btn-row">
+        <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-expShare'">测试</a>
+        <a href="javascript:;" class="easyui-linkbutton btn_sm primary" data-options="iconCls:'icon-ok'">提交</a>
+    </div>
+
+    <script>
+        // 仅用于demo使用
+        function addItem($btn) {
+            let newRow = `<div class="cfg_box_row">
+                        <div class="col_item">
+                            <label class="requireTag">参数名称:<input type="text" class="easyui-textbox sm_width" required>
+                            </label>
+                        </div>
+                        <div class="col_item">
+                            <label class="requireTag">参数类型:<select class="easyui-combobox xs_width"
+                                    data-options="panelHeight:'auto'">
+                                    <option value="001" selected>字符</option>
+                                    <option value="002">数值</option>
+                                </select></label>
+                        </div>
+                        <div class="col_item">
+                            <label class="requireTag">参数默认值:<input type="text" class="easyui-textbox xs_width" required>
+                            </label>
+                        </div>
+                        <div class="col_item">
+                            <a href="javascript:;" class="square-btn minus" onclick="removeItem($(this))"></a>
+                        </div>
+                    </div>`;
+            $btn.closest('.cfg_box').find('.cfg_box_content').append(newRow).find('.easyui-combobox').combobox().end().find('.easyui-textbox').textbox();
+            newRow = null;
+        }
+
+        function removeItem($btn) {
+            $btn.closest('.cfg_box_row').remove();
+            return false;
+        }
+    </script>
+
+</body>
+
+</html>

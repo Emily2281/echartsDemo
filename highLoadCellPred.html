@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拥塞小区列表</title>
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="Frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="css/my.base.css">
+    <link href="css/icons-svg.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/extra.css">
+
+    <!-- easyui js 文件 -->
+    <script src="Frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="Frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="Frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <script src="common/js/mask.js"></script>
+    <script src="common/js/public.js"></script>
+    <script src="common/js/openWin.js"></script>
+    <!-- 引入 ECharts 文件 -->
+    <script src="Frame/echarts/echarts.min.js"></script>
+    <script src="js/highLoadCellPred.js"></script>
+
+</head>
+<body class="extra">
+    <input type="hidden" id="needNearOffset">
+    <div id="heightLoadLayout" class="easyui-layout" data-options="fit:true">
+        <!-- 负载均衡优化推荐结果 -->
+        <div title="负载均衡优化推荐结果" data-options="region:'north',collapsible:false" style="height: 80px">
+            <form id="highLoadForm"  action="" method="post" style="padding-top: 7px;">
+                    <div class="col_item">
+                        <label class="sm_width">日期:</label>
+                        <input id="dataDate" name="pred_data_time" type="text" class="easyui-datebox sm_width"
+                               data-options="tipPosition:'bottom',formatter:formatDate,parser:dateParser">
+                    </div>
+                    <div class="col_item">
+                        <label class="sm_width">地市:</label>
+                        <select id="city" name="city" class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                            <!-- --请选择-- -->
+<!--                            <option value="" data-i18n-text="aisee.public.option.pleaseSelect">&#45;&#45;请选择&#45;&#45;</option>-->
+                        </select>
+                    </div>
+                    <div class="col_item">
+                        <label class="sm_width">区域：</label>
+                        <select id="area" name="district" class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                            <!-- --请选择-- -->
+<!--                            <option value="" data-i18n-text="aisee.public.option.pleaseSelect">&#45;&#45;请选择&#45;&#45;</option>-->
+<!--                            <option value="1" data-i18n-text="workList.jobType.option.outline">已接受</option>-->
+<!--                            <option value="2" data-i18n-text="workList.jobType.option.online">已拒绝</option>-->
+                        </select>
+                    </div>
+                    <div class="col_item">
+                        <label class="sm_width">状态：</label>
+                        <select id="dataStatus" name="confirm_status" class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                            <!-- --请选择-- -->
+                            <option value="" data-i18n-text="aisee.public.option.pleaseSelect">--请选择--</option>
+                            <option value="1" data-i18n-text="workList.jobType.option.outline">已接受</option>
+                            <option value="0" data-i18n-text="workList.jobType.option.online">已拒绝</option>
+                        </select>
+                    </div>
+                    <div class="col_item">
+                        <label class="md_width" >小区名称：</label>
+                        <input  id="dataName" name="cell_name"  type="text" class="easyui-textbox md_width" data-options="prompt:'请输入内容'">
+                    </div>
+                    <div class="col_item">
+                        <!-- 查询 -->
+                        <a id="queryBtn" href="javascript:void(0);" class="easyui-linkbutton btn_sm primary"
+                           data-i18n-text="aisee.public.btn.search">查询</a>
+                        <!-- 导出 -->
+                        <a id="exprotBtn" href="javascript:void(0);" class="easyui-linkbutton btn_sm primary"
+                           data-i18n-text="aisee.public.btn.search">导出</a>
+                    </div>
+                </form>
+        </div>
+        <!-- 拥塞小区列表 -->
+        <div title="拥塞小区列表" data-options="region:'center'">
+            <form id="heightList"  action="" method="post">
+                <div id="heightRow"></div>
+                <div id="paginationDiv" style="background:#fff;float: right"></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

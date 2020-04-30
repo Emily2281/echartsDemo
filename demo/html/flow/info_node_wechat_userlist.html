@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>信息处理节点/业务配置/微信/选择接收人</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body class="wechat_userlist easyui-layout" data-options="fit:true">
+    <div data-options="region:'west',width:'46%'">
+        <div id="tb" class="flex_toolbar">
+            <form>
+                <div class="col_item">
+                    <label class="sm_width">地区:</label>
+                    <select class="easyui-combotree md_width"
+                        data-options="editable:false,panelHeight:300,url:'../../common/data/tree_data.json',method:'get',lines:true"></select>
+                </div>
+                <div class="col_item">
+                    <label class="sm_width">姓名: </label><input type="text" class="easyui-textbox sm_width">
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-search'">查询</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-ok'">确认</a>
+                </div>
+            </form>
+        </div>
+        <table id="dg1"></table>
+    </div>
+    <div data-options="region:'center'">
+        <div class="dg_oprts">
+            <a href="javascript:;" class="oprtBtn round-btn icon-all-right"></a>
+            <a href="javascript:;" class="oprtBtn round-btn icon-all-left"></a>
+        </div>
+    </div>
+    <div data-options="region:'east',width:'46%'">
+        <div id="tb2" class="flex_toolbar"><span class="title">已选择</span></div>
+        <table id="dg2"></table>
+    </div>
+</body>
+
+
+<script>
+    $(function () {
+        // data-grid init
+        $('#dg1').datagrid({
+            rownumbers: true,
+            singleSelect: true,
+            url: '../../common/data/datagrid_data3.json',
+            method: 'get',
+            fit: true,
+            pagination: true,
+            toolbar: '#tb',
+            columns: [[
+                { field: 'ck', checkbox: true},
+                { field: 'approval', sortable: true, width: 100, title: '姓名' },
+                { field: 'opt', align: 'center', width: 100, title: '性别' },
+                { field: 'taskid', sortable: true, width: 200, title: '账号' },
+                { field: 'taskname', sortable: true, width: 100, title: '手机' },
+            ]]
+        });
+        $('#dg2').datagrid({
+            rownumbers: true,
+            singleSelect: true,
+            url: '../../common/data/datagrid_data3.json',
+            method: 'get',
+            fit: true,
+            toolbar: '#tb2',
+            columns: [[
+                { field: 'ck', checkbox: true},
+                { field: 'approval', sortable: true, width: '80%', title: '姓名' },
+            ]]
+        });
+    });
+
+</script>
+
+
+
+</html>

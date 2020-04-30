@@ -1,0 +1,216 @@
+/*用于工作管理 、工作运行实例*/
+/*公共*/
+.auto_width .l-btn-text {
+    max-width: inherit;
+}
+.auto_height {
+    height: auto !important;
+}
+.full_height {
+    height: 100% !important;
+}
+.full_page_height {
+    height: 100vh !important;
+}
+.switchbutton {
+    border-radius: 8px;
+}
+/* 流程图 流程运行日志 */
+.chart_ifr{
+    height: 100%;
+    width: 100%;
+    border: unset;
+}
+body.my_prophet {
+    margin: 5px;
+}
+
+/* 表达式 标签元素 */
+.tag_element_panel {
+    min-height: 100%;
+    padding: 8px;
+}
+.tag_element_row {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.02);
+    box-shadow: inset 0 1px 1px #e9ecef, inset 0 -1px 1px #fff;
+}
+.tag_element_row h3 {
+    color: #495057;
+    font-size: 12px;
+    margin: 0 0 5px 5px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.tag_element_row a {
+    border-color: transparent;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    cursor: move;
+    margin: 4px;
+}
+.tag_element_row .round_btn {
+    width: 24px;
+    padding: 0;
+}
+/*表达式 排序*/
+.sortable {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    overflow-y: auto;
+    height: 100%;
+}
+.sortable-li {
+    margin: 0 10px 10px 0;
+    float: left;
+    width: 130px;
+    height: 70px;
+    font-size: 1em;
+    text-align: center;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: box-shadow .2s ease-in, background-color .2s ease-in-out;
+    overflow: hidden;
+}
+.sortable-li.current {
+    box-shadow: #0fa6d3 0 0 1px 1px, rgba(0, 0, 0, 0.2) 0 2px 4px 1px;
+}
+.sortable-li:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+.sortable-li.current:hover {
+    box-shadow: #0fa6d3 0 0 1px 1px, rgba(0, 0, 0, 0.3) 0 2px 12px 2px;
+}
+.drop-item {
+    cursor: pointer;
+    height: 100%;
+    padding-top: 10px;
+    position: relative;
+}
+.drop-item h4 {
+    margin: 0;
+    position: relative;
+    top: -6px;
+}
+.drop-item .customText {
+    margin: 0 auto;
+    color: #007aff;
+    font-size: 12px;
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.drop-item .customText a:last-child {
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+}
+.drop-item .customText input[type="text"] {
+    height: 22px;
+    line-height: 22px;
+}
+.drop-item .customText .textbox {
+    margin-left: 0;
+}
+.drop-item label:nth-last-child(2) {
+    font-size: 16px;
+    line-height: 50px;
+}
+.drop-item .field-input {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+.drop-item input[type=text] {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+    border-color: #ccc;
+    margin: 0 3px;
+}
+.removeTag {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    padding: 6px;
+    transition: all .3s ease-in-out;
+}
+.removeTag::before,
+.removeTag::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #0fa6d3;
+}
+.removeTag::before {
+    transform: rotate(45deg);
+}
+.removeTag::after {
+    transform: rotate(-45deg);
+}
+.removeTag:hover {
+    transform: rotate(.5turn);
+}
+.opt_icon {
+    opacity: 0.75;
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+}
+.opt_icon:hover {
+    opacity: 1;
+}
+
+/* ========== 数据操作步骤 ========== */
+.info_node {
+    height: calc(100vh - 30px);
+}
+.info_node .panel_ifr {
+    width: 100%;
+    height: calc(100vh - 42px);
+}
+.panel_content {
+    padding: 10px;
+}
+.panel_title {
+    margin: 0 10px 10px 10px;
+    padding: 5px 0;
+    line-height: 22px;
+    border-bottom: 1px solid #dee2e6;
+}
+.panel_title::before {
+    content: '';
+    vertical-align: -2px;
+    display: inline-block;
+    width: 5px;
+    height: 14px;
+    background-color: #0fa6d3;
+    margin-right: 10px;
+}
+
+.panel-body {
+    overflow: auto;
+    border-color: #1E9FFF;
+    /*border-bottom-width: 0;*/
+}
+
+.layout-panel .panel-header {
+    background-color: #1E9FFF;
+    border-color: #1E9FFF;
+    padding: 5px 12px 5px 8px;
+}
+.layout-panel .panel-header + .panel-body {
+    border-color: #1E9FFF;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据库管理</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <!-- <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/icon.css"> -->
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_commoninfo_b.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body>
+    <!-- 工具栏 -->
+    <div id="proxy_toolbar" class="flex_toolbar">
+        <form>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>数据库名称:</label><input type="text" class="easyui-textbox md_width">
+                </div>
+                <div class="col_item">
+                    <label>数据库URL:</label><input type="text" class="easyui-textbox md_width">
+                </div>
+                <div class="col_item">
+                    <label>数据库驱动类型:</label><select class="easyui-combobox xs_width" data-options="panelHeight:'auto'">
+                        <option value="001">全部</option>
+                        <option value="002">oracle</option>
+                        <option value="003">mysql</option>
+                        <option value="004">sql server</option>
+                        <option value="005">postgresql</option>
+                        <option value="006">mariadb</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <label>归属类型:</label><select class="easyui-combobox xs_width" data-options="panelHeight:'auto'">
+                        <option value="001">外部库</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                        data-options="iconCls:'icon-search-primary'">查询</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-add'"
+                        onclick="openWin('./databaseCfgWin.html','新建数据库',{autoSize:true})">新建</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-edit'"
+                        onclick="openWin('./databaseCfgWin.html','修改数据库',{autoSize:true})">修改</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-cancel'">删除</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-export'">导出</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- 工具栏 end -->
+    <table id="proxyTable"></table>
+
+    <script>
+        $(function () {
+            window.defaultWinHeightPer = 0.8;
+            // data-grid init
+            $('#proxyTable').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fitColumn: true,
+                fit: true,
+                pagination: true,
+                toolbar: '#proxy_toolbar',
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskname', sortable: true, width: 300, title: '数据库名称' },
+                    { field: 'taskid', sortable: true, width: 300, title: '数据库URL' },
+                    { field: 'opt', align: 'center', width: 100, title: '数据库驱动' },
+                    { field: 'emg', align: 'center', width: 100, title: '用户名' },
+                    { field: 'status', align: 'center', width: 100, title: '归属类型' },
+                    { field: 'status', align: 'center', width: 100, title: '数据类型' },
+                    { field: 'approval', align: 'center', width: 100, sortable: true, title: '创建人' },
+                    { field: 'starttime', sortable: true, title: '创建时间' },
+                    { field: 'approval', align: 'center', width: 100, sortable: true, title: '最近修改人' },
+                    { field: 'endtime', sortable: true, title: '最近修改时间' }
+                ]]
+            });
+        });
+    </script>
+
+</body>
+
+</html>

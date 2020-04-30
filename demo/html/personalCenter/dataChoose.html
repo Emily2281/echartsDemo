@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心 / 我的配置 / 数据分配</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+    <!-- 拖拽 -->
+    <script type="text/javascript" src="../../common/js/datagrid-dnd.js"></script>
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="pc.css">
+</head>
+
+<body>
+    <div class="easyui-tabs" data-options="fit:true,border:false">
+        <div title="任务模版" data-options="closable:true">
+            <iframe src="dataChoose_dg.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+        <div title="流程配置" data-options="closable:true">
+            <iframe data-src="dataChoose_dg.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+        <div title="指令集" data-options="closable:true">
+            <iframe data-src="dataChoose_dg.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+        <div title="指令模版" data-options="closable:true">
+            <iframe data-src="dataChoose_dg.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+        <div title="网元" data-options="closable:true">
+            <iframe data-src="dataChoose_dg.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+    </div>
+
+</body>
+
+</html>

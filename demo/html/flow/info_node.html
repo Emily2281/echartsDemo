@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>信息处理节点</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+<body>
+    <div class="table-list easyui-layout" style="height:1580px;">
+        <!-- 负载均衡优化推荐结果 -->
+        <div title="负载均衡优化推荐结果" data-options="region:'north',split:true,collapsible:false" style="height:430px;">
+            <div id="tb" class="flex_toolbar">
+                <form id="query_table_form"  action="" method="post">
+                    <input type="hidden" id="dataDesc" value="10"/>
+                    <div class="col_item">
+                        <label class="md_width">日期:</label>
+                        <input id="dataDate" name="dataDate" data-options="tipPosition:'bottom'" class="easyui-textbox md_width">
+                    </div>
+                    <div class="col_item">
+                        <label class="md_width">地市:</label>
+                        <select id="city" name="city" class="easyui-combotree" style="width:200px;" ></select>
+                    </div>
+                    <div class="col_item">
+                        <label class="md_width">区域：</label>
+                        <select id="area" name="area" class="easyui-combotree" style="width:200px;" ></select>
+                    </div>
+                    <div class="col_item">
+                        <label class="md_width">状态：</label>
+                        <select id="dataStatus" name="dataStatus" class="easyui-combotree" style="width:200px;" >
+                            <!-- --请选择-- -->
+                            <option value="" data-i18n-text="aisee.public.option.pleaseSelect"></option>
+                            <option value="1" data-i18n-text="workList.jobType.option.outline">已接受</option>
+                            <option value="2" data-i18n-text="workList.jobType.option.online">已拒绝</option>
+                        </select>
+                    </div>
+                    <div class="col_item">
+                        <label class="md_width" >小区名称：</label>
+                        <input  id="dataName" name="dataName"  type="text" class="easyui-textbox md_width" data-options="prompt:'请输入内容'">
+                    </div>
+                    <div class="col_item">
+                        <!-- 查询 -->
+                        <a id="queryBtn" href="javascript:void(0);" class="easyui-linkbutton btn_sm"
+                           data-options="iconCls:'icon-search-primary'"
+                           data-i18n-text="aisee.public.btn.search"
+                           data-dg-query="#dg" ></a>
+                        <!-- 导出 -->
+                        <a id="exprotBtn" href="javascript:void(0);" class="easyui-linkbutton btn_sm"
+                           data-options="iconCls:'icon-search-primary'"
+                           data-i18n-text="aisee.public.btn.search"
+                           data-dg-query="#dg" >导出</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- 拥塞小区列表 -->
+        <div title="拥塞小区列表" data-options="region:'center',split:true">
+            <div id="tableTb" class="flex_toolbar">
+            </div>
+            <table id="tableList"></table>
+        </div>
+    </div>
+</body>
+</html>

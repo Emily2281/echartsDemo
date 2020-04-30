@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程 / 指令节点</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <!-- <link rel="stylesheet" href="../../common/css/my_flow.css"> -->
+    <!-- <link rel="stylesheet" href="../../common/css/my_regexBox.css"> -->
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body>
+    <!-- 右键菜单 -->
+    <div id="mm_root" class="easyui-menu">
+        <div data-options="iconCls:'icon-add'">添加条件</div>
+        <div data-options="iconCls:'icon-add'">添加循环</div>
+        <div data-options="iconCls:'icon-add'">添加操作</div>
+        <div data-options="iconCls:'icon-add'">添加子流程</div>
+    </div>
+
+    <div id="div_tabs" class="easyui-tabs" data-options="fit:true,selected:0">
+        <!-- =================== 业务配置 =================== -->
+        <div title="业务配置" id="busi_tab">
+            <!-- 页面内容 -->
+            <!-- toolbar -->
+            <div id="tb1" class="flex_toolbar">
+                <form>
+                    <div class="form_row">
+                        <div class="col_item">
+                            <label data-options="prompt:'指令节点'"><span class="requireTag">节点名称:</span></label>
+                            <input class="easyui-textbox">
+                        </div>
+                        <div class="col_item">
+                            <label data-mtips="请选择变量">成员指定:</label>
+                            <input class="easyui-textbox sm_width" data-options="icons:[{
+                                iconCls:'icon-search',
+                                handler: function(e) { openWin('./var_retrieve.html','变量检索', {max:true})}
+                            }]">
+                        </div>
+                        <div class="col_item">
+                            <label data-mtips="请选择变量">网元指定:</label>
+                            <input class="easyui-textbox sm_width" data-options="icons:[{
+                                iconCls:'icon-search',
+                                handler: function(e) { openWin('./var_retrieve.html', '变量检索', {max:true})}
+                            }]">
+                        </div>
+                        <div class="col_item">
+                            <label><span class="requireTag">选择方式:</span></label>
+                            <select class="easyui-combobox xs_width" data-options="panelHeight:'auto'" id="selMode">
+                                <option value="netunit">网元</option>
+                                <option value="unittype">网元类型</option>
+                            </select>
+                        </div>
+                        <div class="col_item">
+                            <label>场景标识:</label>
+                            <select class="easyui-combobox xs_width" data-options="panelHeight:'auto'">
+                                <option value="000">无</option>
+                                <option value="001">有</option>
+                            </select>
+                        </div>
+                        <div class="col_item">
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm primary"
+                                data-options="iconCls:'icon-save'">保存</a>
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-add'"
+                                id="addBtn" onclick="openCmdWin($(this))">添加</a>
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                                data-options="iconCls:'icon-cancel'">删除</a>
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-tip'"
+                                onclick="toggleAdv($(this))">启用高级模式</a>
+                        </div>
+                    </div>
+                    <div class="form_row hide" id="advMode">
+                        <div class="col_item">
+                            <label data-mtips="单位：秒,默认按流程引擎配置">指令服务超时时间:</label>
+                            <input type="text" class="easyui-numberbox"
+                                data-options="min:1,max:3600,prompt:'单位：秒，不超过1800'">
+                        </div>
+                        <div class="col_item">
+                            <label data-mtips="默认按流程引擎配置">超时重试次数:</label>
+                            <input type="text" class="easyui-numberbox" data-options="min:0,max:5,prompt:'不超过2次'">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <table id="dg1"></table>
+            <!-- 页面内容 end -->
+        </div>
+        <!-- =================== 取数配置 =================== -->
+        <div title="取数配置">
+            <!-- toolbar -->
+            <div id="tb2" class="flex_toolbar">
+                <form>
+                    <div class="form_row">
+                        <div class="col_item">
+                            <label>业务取数列表:</label>
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-add'" onclick="openWin('./cmd_node_win.html','新增取数变量配置');">添加</a>
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-edit'">修改</a>
+                            <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-cancel'">删除</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 页面内容 -->
+            <table id="dg2"></table>
+            <!-- 页面内容 end -->
+        </div>
+        <!-- =================== 控制配置 =================== -->
+        <div title="控制配置">
+        </div>
+        <!-- =================== 操作配置 =================== -->
+        <div title="操作配置">
+        </div>
+
+    </div>
+
+    <script>
+        $(function () {
+            // 1. 业务配置
+            $('#dg1').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                pagination: true,
+                toolbar: '#tb1',
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskname', sortable: true, width: 200, title: '层级名称' },
+                    { field: 'taskid', sortable: true, width: 200, title: '层级路径' },
+                    { field: 'approval', sortable: true, width: 100, title: '层级成员' },
+                    { field: 'emg', sortable: true, width: 200, title: '网元类型名称' },
+                    { field: 'status', align: 'center', sortable: true, width: 200, title: '选择属性名称' },
+                ]],
+                onDblClickRow: openCmdWin
+            });
+
+            // 2. 取数配置
+            $('#dg2').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                pagination: true,
+                toolbar: '#tb2',
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskname', sortable: true, width:'40%', title: '取数变量名称' },
+                    { field: 'taskid', sortable: true, width:'40%', title: '取数变量描述' },
+                ]],
+                onDblClickRow: function () {
+                    $('#getDataWin').window('open');
+                }
+            });
+
+        });
+
+        // 切换高级模式
+        function toggleAdv($btn) {
+            let onText = '关闭高级模式', offText = '打开高级模式';
+            let isOff = $('#advMode').toggleClass('hide').hasClass('hide');
+            $btn.find('.l-btn-icon').toggleClass('icon-tip-off', !isOff);
+            if (!isOff) {
+                $btn.find('.l-btn-text').text(onText);
+                $('#advMode').find('.easyui-numberbox').numberbox();
+            } else {
+                $btn.find('.l-btn-text').text(offText);
+            }
+            $('#dg1').datagrid('resize',{fit:true});
+        }
+
+        // 新增配置
+        function openCmdWin($btn) {
+            let type = document.querySelector('#selMode').value.toLowerCase();
+            if (type === 'netunit') {
+                openWin('./cmd_node_netunit.html', '新增网元', {max:true});
+            } else {
+                openWin('./cmd_node_type.html', '新增网元类型', {max:true});
+            }
+        }
+
+    </script>
+</body>
+
+
+
+
+</html>

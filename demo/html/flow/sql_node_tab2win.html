@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程 / SQL节点 / 取数配置 / 新增修改</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+</head>
+
+<body>
+    <form class="my-win-form xl_width">
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">变量名:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">赋值方式:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="editable:false,width:'100%',panelHeight:'auto'">
+                        <option value="add" selected>追加</option>
+                        <option value="replace">替换</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">输出列:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'" value="*">
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label"></div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <label class="my_checkbox2"><input type="checkbox">是否获取列名</label>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="btn-row">
+        <a href="javascript:;" class="easyui-linkbutton btn_sm primary" data-options="iconCls:'icon-save'">保存</a>
+    </div>
+
+    <script>
+        $('.easyui-textbox').textbox({
+            tipPosition: 'top'
+        })
+    </script>
+
+</body>
+
+
+
+
+</html>

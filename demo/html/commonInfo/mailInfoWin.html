@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>邮箱管理 / 新建修改邮箱</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_commoninfo_b.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body class="mailInfoWin">
+    <form class="my-win-form xl_width">
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">邮件地址:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',tipPosition:'bottom'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">邮箱类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="002" selected>接收邮箱</option>
+                        <option value="003">发送邮箱</option>
+                        <option value="004">联系人</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>数据类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="002" selected>公有</option>
+                        <option value="003">私有</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>发送协议类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="002" selected>Exchange</option>
+                        <option value="003">Smtp</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>发送服务器地址:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'">
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>发送端口:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',tipPosition:'bottom'">
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">接收协议类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="002" selected>Exchange</option>
+                        <option value="003">Smtp</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">接收服务器地址:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',tipPosition:'bottom'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>接收端口:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',tipPosition:'bottom'">
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">账号:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',tipPosition:'bottom'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">密码/授权码:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="password" class="easyui-textbox" data-options="width:'100%',tipPosition:'bottom'"
+                        required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">代理名称:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="001">192.168.88.111</option>
+                        <option value="002">GMCC-OA代理-SOCKS</option>
+                        <option value="003">test_代理</option>
+                        <option value="004">代理A</option>
+                        <option value="005">代理B</option>
+                        <option value="006">代理C</option>
+                        <option value="007">代理D</option>
+                        <option value="008">网管机访问OA代理</option>
+                        <option value="009">网管机访问OA代理_邮箱</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="btn-row">
+        <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-expShare'">测试</a>
+        <a href="javascript:;" class="easyui-linkbutton btn_sm primary" data-options="iconCls:'icon-ok'">提交</a>
+    </div>
+
+
+    <script>
+    </script>
+
+</body>
+
+</html>

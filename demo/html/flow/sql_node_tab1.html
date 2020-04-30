@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SQL节点/业务配置</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <script src="../../common/js/my_flow.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="flex_page flex_col">
+    <div class="flex_toolbar" id="tb">
+        <form>
+            <div class="form_row">
+                <div class="col_item">
+                    <label><span class="requireTag">节点名称:</span></label>
+                    <input class="easyui-textbox md_width" data-options="prompt:'指令节点'">
+                </div>
+                <div class="col_item adv_item">
+                    <label class="md_width"><span class="requireTag">选择数据库:</span></label>
+                    <select class="easyui-combobox md_width"
+                            data-options="panelHeight:'auto',editable:false">
+                        <option value="001" selected>112数据源01</option>
+                        <option value="002">192.168.88.215:10000/mysql</option>
+                    </select>
+                </div>
+                <div class="col_item common_item hide">
+                    <label class="md_width"><span class="requireTag">操作方式:</span></label>
+                    <select class="easyui-combobox md_width"
+                            data-options="panelHeight:'auto',editable:false">
+                        <option value="save" selected>存储</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <label><span class="requireTag">操作模式:</span></label>
+                    <select id="operate_type" class="easyui-combobox md_width"
+                            data-options="panelHeight:'auto',editable:false">
+                        <option value="adv" selected>SQL节点高级模式</option>
+                        <option value="common">SQL节点普通模式</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm primary"
+                       data-options="iconCls:'icon-save'">保存</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-tip'"
+                       onclick="toggleAdv($(this))">启用高级模式</a>
+                </div>
+                <div class="col_item common_item hide">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-add'"
+                       onclick="openWin('sql_node_normal_cfg.html','添加配置',{max:true})">添加</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-cancel'">删除</a>
+                </div>
+            </div>
+            <div class="form_row hide" id="advMode">
+                <div class="col_item">
+                    <label data-mtips="单位：秒,默认按流程引擎配置">指令服务超时时间:</label>
+                    <input type="text" class="easyui-numberbox" data-options="min:1,max:3600,prompt:'单位：秒，不超过1800'">
+                </div>
+                <div class="col_item">
+                    <label data-mtips="默认按流程引擎配置">超时重试次数:</label>
+                    <input type="text" class="easyui-numberbox" data-options="min:0,max:5,prompt:'不超过2次'">
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- 高级模式 -->
+    <h4 class="panel_title">SQL节点高级模式</h4>
+    <iframe class="panel_ifr" src="sql_node_adv.html" frameborder="0"></iframe>
+
+    <script>
+        $(function () {
+            // 切换模式
+            $('#operate_type').combobox(
+                {
+                    onChange: function (newValue, oldValue) {
+                        if (newValue === 'common') {
+                            $('.panel_title').addClass('hide');
+                            $('.panel_ifr').addClass('hide');
+                            $('.common_item').removeClass('hide').parseAgain();
+                            $('.adv_item').addClass('hide');
+                            dgInit();
+                        } else {
+                            $('.panel_title').removeClass('hide');
+                            $('.panel_ifr').removeClass('hide').attr('src', 'sql_node_' + newValue + '.html');
+                            $('.common_item').addClass('hide');
+                            $('.adv_item').removeClass('hide').parseAgain();
+                            dgRemove();
+                        }
+                    }
+                });
+        });
+
+        // 生成datagrid
+        function dgInit() {
+            $('<table id="common_dg" />').appendTo('body').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                toolbar: '#tb',
+                pagination: true,
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskname', sortable: true, width: 200, title: '变量名' },
+                    { field: 'taskid', sortable: true, width: 200, title: '数据库' },
+                    { field: 'approval', sortable: true, width: 100, title: '表名' },
+                ]],
+            })
+        }
+
+        // 销毁datagrid
+        function dgRemove() {
+            $('#common_dg').closest('.datagrid').find('#tb').removeClass('datagrid-toolbar').insertBefore($('.panel_title'));
+            $('#common_dg').closest('.datagrid').remove();
+        }
+
+    </script>
+</body>
+
+
+
+
+</html>

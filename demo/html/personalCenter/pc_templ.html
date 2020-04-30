@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心 / 我的配置 / 任务模版</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="pc.css">
+</head>
+
+<body>
+    <div id="tb" class="flex_toolbar">
+        <form>
+            <div class="form_row">
+                <div class="col_item">
+                    <label class="sm_width">关键词:</label>
+                    <input type="text" class="easyui-textbox sm_width">
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                       data-options="iconCls:'icon-settings'"
+                       onclick="openWin('cfgPc.html','流程展示配置',{max:true});">展示配置</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                       data-options="iconCls:'icon-search-primary'">查询</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-edit'">修改</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-cancel'">删除</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                       data-options="iconCls:'icon-task-add'">创建任务</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table id="dg"></table>
+
+    <script>
+        $(function () {
+            $('#dg').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                pagination: true,
+                toolbar: '#tb',
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskname', sortable: true, width: 260, title: '任务名称' },
+                    {
+                        field: 'taskid', align: 'center', sortable: true, width: 90, title: '启用',
+                        formatter: function () {
+                            return `<input name="opt_btn" class="easyui-switchbutton" checked>`;
+                        }
+                    },
+                    {
+                        field: 'approval', align: 'center', sortable: true, width: 100, title: '触发',
+                        formatter: function () {
+                            return `<a href="javascript:;" class="dg_btn bg_success">立即允许</a>`;
+                        }
+                    },
+                    { field: 'emg', sortable: true, width: 100, title: '模版类型' },
+                    { field: 'status', align: 'center', sortable: true, width: 200, title: '绑定任务名称' },
+                    { field: 'status', align: 'center', sortable: true, width: 200, title: '任务类型' },
+                    { field: 'status', align: 'center', sortable: true, width: 200, title: '间隔周期' },
+                    { field: 'status', align: 'center', sortable: true, width: 200, title: '创建人' },
+                    { field: 'starttime', align: 'center', sortable: true, width: 200, title: '创建时间' },
+                    { field: 'status', align: 'center', sortable: true, width: 200, title: '修改人' },
+                    { field: 'endtime', align: 'center', sortable: true, width: 200, title: '修改时间' },
+                ]],
+                onLoadSuccess: function (data) {
+                    $('input[name="opt_btn"]').switchbutton({
+                        onText: '是',
+                        offText: '否',
+                        height: 22
+                    });
+                },
+            });
+        })
+    </script>
+</body>
+
+</html>

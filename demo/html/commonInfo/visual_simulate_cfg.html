@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第三方系统管理</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <!-- <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/icon.css"> -->
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_commoninfo_b.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body>
+    <!-- 工具栏 -->
+    <div id="visual_simulate_tb" class="flex_toolbar">
+        <form>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>平台名称:</label><input type="text" class="easyui-textbox md_width">
+                </div>
+                <div class="col_item">
+                    <label class="md_width">平台地址:</label><input type="text" class="easyui-textbox md_width">
+                </div>
+                <div class="col_item">
+                    <label>是否验证登录:</label><select class="easyui-combobox xs_width" data-options="panelHeight:'auto'">
+                        <option value="001" selected>全部</option>
+                        <option value="002">是</option>
+                        <option value="003">否</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <label>浏览器类型:</label><select class="easyui-combobox xs_width" data-options="panelHeight:'auto'">
+                        <option value="001" selected>全部</option>
+                        <option value="002">chrome</option>
+                        <option value="003">firefox</option>
+                        <option value="003">ie</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>代理名称:</label><input type="text" class="easyui-textbox md_width">
+                </div>
+                <div class="col_item">
+                    <label class="md_width">是否启用代理:</label><select class="easyui-combobox md_width" data-options="panelHeight:'auto'">
+                        <option value="001" selected>全部</option>
+                        <option value="002">是</option>
+                        <option value="003">否</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                        data-options="iconCls:'icon-search-primary'">查询</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-add'"
+                        onclick="openWin('./visual_simulate_cfg_win.html','新建第三方系统',{autoSize:true})">新建</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-edit'"
+                        onclick="openWin('./visual_simulate_cfg_win.html','修改第三方系统',{autoSize:true})">修改</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-cancel'">删除</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-export'">导出</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- 工具栏 end -->
+    <table id="visual_simulate_tab"></table>
+
+    <script>
+        $(function () {
+            // data-grid init
+            $('#visual_simulate_tab').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fitColumn: true,
+                fit: true,
+                pagination: true,
+                toolbar: '#visual_simulate_tb',
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskname', sortable: true, width: 300, title: '平台名称' },
+                    { field: 'taskid', align: 'center', sortable: true, width: 200, title: '平台URL' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '浏览器类型' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '数据类型' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '平台网络标识' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '是否启用代理' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '代理名称' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '是否验证登录' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '用户元素标识' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '用户元素标识类型' },
+                    { field: 'status', align: 'center', width: 200, sortable: true, title: '账号' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '密码元素标识元素' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '登录按钮标识' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '登录按钮标识类型' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '是否验证码' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '验证码输入标识' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '验证码输入标识类型' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '验证码图片标识' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '验证码图片标识类型' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '是否优先点击页面元素' },
+                    { field: 'opt', align: 'center', width: 200, sortable: true, title: '是否在输入账号密码后执行' },
+                    { field: 'approval', align: 'center', width: 100, sortable: true, title: '创建人' },
+                    { field: 'endtime', sortable: true, title: '创建时间' },
+                    { field: 'starttime', sortable: true, title: '最近修改时间' },
+                ]]
+            });
+        });
+    </script>
+
+</body>
+
+</html>

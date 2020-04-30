@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心 / 我的配置 / 流程展示配置 / 修改字段</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+    <!-- 拖拽 -->
+    <script type="text/javascript" src="../../common/js/datagrid-dnd.js"></script>
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="pc.css">
+
+</head>
+
+<body class="detail_cfg">
+    <form class="my-win-form lg_width">
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label for="fitColumns">字段自适应:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <label class="my_checkbox2"><input type="checkbox" name="fitColumns" id="fitColumns" style="margin-left: 0;"></label>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row" id="col_width">
+            <div class="my-form-label">
+                <label>字段宽度:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'">
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>字段排序方式:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="editable:false,width:'100%',panelHeight:'auto',onShowPanel: function() {toggleWinH('strecth')}, onHidePanel: function() {toggleWinH('shrink')}">
+                        <option value="001" selected>不排序</option>
+                        <option value="002">默认升序</option>
+                        <option value="003">默认降序</option>
+                        <option value="004">中文拼音升序</option>
+                        <option value="005">中文拼音降序</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="btn-row">
+        <a href="javascript:;" class="easyui-linkbutton btn_sm primary" data-options="iconCls:'icon-ok'">确定</a>
+    </div>
+
+    <script>
+        // 修复概率出现的输入框超出长度情况
+        document.onreadystatechange = function(e) {
+            if (document.readyState === 'complete') {
+                $('.easyui-textbox').textbox('resize', $(this).parent().width());
+                $('.easyui-combobox').combobox('resize', $(this).parent().width());
+            }
+        }
+
+        $('#fitColumns').on('change', function(e) {
+            if (e.target.checked) {
+                $('#col_width').addClass('hide');
+            } else {
+                $('#col_width').removeClass('hide');
+            }
+        });
+
+        // combobox下拉框弹出收起时调整外面弹窗高度
+        function toggleWinH(type, newH = 150) {
+            if (type !== 'strecth') newH = -newH;
+            let oldH = parent.$('#win').window('options').height;
+            parent.$('#win').window('resize', {
+                height: oldH + newH
+            }).window('center');
+        }
+    </script>
+
+</body>
+
+</html>

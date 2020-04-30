@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程编辑器/流程运行日志/实时日志</title>
+    <!-- libs -->
+    <!-- easyui material-teal样式 -->
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/datagrid-detailview.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/icon.css">
+
+    <script src="../../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../../frame/mtips/mtips.css">
+
+    <script src="../../../common/js/openWin.js"></script>
+
+    <!-- 自定义 stylesheet -->
+    <link rel="stylesheet" href="../../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="full_page_height">
+    <div class="log_wrapper">
+        <div class="log_tb">
+            <div class="col_item">
+                <label>行数:</label>
+                <input type="text" class="easyui-textbox sm_width">
+            </div>
+            <div class="col_item">
+                <label>关键字:</label>
+                <input type="text" class="easyui-textbox md_width">
+            </div>
+            <div class="col_item">
+                <label class="my_checkbox2"><input type="checkbox">自动刷新(30s)</label>
+            </div>
+            <div class="col_item">
+                <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-reload'">刷新</a>
+                <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-download'">下载日志</a>
+            </div>
+        </div>
+        <div id="flowItemLogDiv">
+            <!-- 替换黑屏代码 -->
+            <!-- 替换黑屏代码 -->
+        </div>
+    </div>
+</body>
+
+</html>

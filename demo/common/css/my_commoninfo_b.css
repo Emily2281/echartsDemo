@@ -1,0 +1,166 @@
+.flex_page {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow: hidden;
+}
+.flow_col {
+    flex-flow: column nowrap;
+}
+.flow_row {
+    flex-flow: row nowrap;
+    height: 100vh;
+}
+
+/* 邮箱管理 */
+.mailInfoWin .my-form-label {
+    width: 100px;
+}
+
+/* 第三方接口管理  */
+.interfaceMgrWin > .my-win-form {
+    width: 650px;
+}
+
+/* 第三方系统管理 */
+.vscfgWin > .my-win-form {
+    width: 650px;
+}
+.cfg_box {
+    flex: 1;
+    border: 1px solid #ced4da;
+    position: relative;
+    max-height: 200px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.vscfgWin .cfg_box {
+    max-height: none;
+}
+.cfg_box .cfg_box_header {
+    flex: 0 0 28px;
+    padding: 2px 5px;
+    background-color: #f8f9fa;
+    border-bottom: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color .3s ease-in-out;
+}
+.cfg_box .cfg_box_header .col_item {
+    margin: 0;
+}
+.cfg_box .cfg_box_header .title {
+    margin: 0 0 0 10px;
+    font-size: 12px;
+    vertical-align: top;
+}
+.cfg_box .cfg_box_content {
+    overflow: auto;
+}
+.cfg_box .textbox {
+    margin-left: 5px;
+}
+.cfg_box .cfg_box {
+    margin: 10px;
+}
+.cfg_box_row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 10px;
+}
+.cfg_box_row > div {
+    flex: 1;
+    margin: 0 5px;
+    font-size: 12px;
+}
+.cfg_box_row > div:last-child {
+    flex: 0 1 auto;
+}
+.cfg_box_row > textarea {
+    margin: 0;
+    flex: 1 1 80%;
+    height: 48px;
+    align-self: stretch;
+}
+.cfg_box_row.animate_show {
+    animation: ani_show .3s ease-in 1;
+}
+@keyframes ani_show {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+.square-btn {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 0 5px;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    background-size: 50% !important;
+    vertical-align: middle;
+}
+.square-btn:hover {
+    border-color: #0fa6d3;
+}
+.square-btn:focus {
+    border-color: #0fa6d3;
+    box-shadow: 0 0 0 2px rgba(133, 206, 255, .5);
+    transition: box-shadow .2s ease-in;
+}
+.square-btn.minus {
+    position: relative;
+}
+.square-btn.minus::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 1px;
+    width: 60%;
+    transform: translateX(-50%);
+    background-color: #0fa6d3;
+}
+
+
+/* 文件目录管理 */
+.catalogMgr > div {
+    border: 1px solid #ced4da;
+}
+.folderTree_div {
+    flex: 1;
+    margin-right: 5px;
+}
+.folderTree_header {
+    height: 28px;
+    padding-top: 5px;
+    background-color: #e9ecef;
+    border-bottom: 1px solid #ced4da;
+}
+.folderTree_header .title {
+    display: inline-block;
+    margin: 0 5px;
+    padding-left: 30px;
+    padding-right: 10px;
+    line-height: 22px;
+    font-size: 12px;
+    background-position: 10px 50%;
+    background-size: 16px;
+    background-color: #fff;
+    border: solid #ced4da;
+    border-width: 1px 1px 0 1px;
+    border-radius: 4px 4px 0 0;
+    color: #0fa6d3;
+}
+.folderTree_wrapper {
+    overflow: auto;
+    height: calc(100vh - 30px);
+}
+.folderDetail_div {
+    flex: 3;
+}

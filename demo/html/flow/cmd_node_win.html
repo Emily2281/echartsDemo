@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程/指令节点/取数配置/新增win</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body class="cmd_node_win">
+    <div class="get_data_var">
+        <form class="lg_width">
+            <div class="my-form-row">
+                <div class="my-form-label">
+                    <label class="requireTag">变量名称</label>
+                </div>
+                <div class="my-form-control">
+                    <div class="my-form-input">
+                        <input type="text" class="easyui-textbox" data-options="width:'100%'" required>
+                    </div>
+                </div>
+            </div>
+            <div class="my-form-row">
+                <div class="my-form-label">
+                    <label class="requireTag">对象类型:</label>
+                </div>
+                <div class="my-form-control">
+                    <div class="my-form-input">
+                        <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'" required>
+                            <option value="001" selected>网元</option>
+                            <option value="002">成员</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="my-form-row">
+                <div class="my-form-label">
+                    <label class="requireTag">结果类型:</label>
+                </div>
+                <div class="my-form-control">
+                    <div class="my-form-input">
+                        <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'" required>
+                            <option value="001" selected>原始结果</option>
+                            <option value="002">解析结果</option>
+                            <option value="003">清洗结果</option>
+                            <option value="004">格式化二维表结果</option>
+                            <option value="005">异常结果</option>
+                            <option value="006">所有结果</option>
+                            <option value="007">解析模版变量值</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="my-form-row">
+                <div class="my-form-label">
+                    <label class="requireTag">指令:</label>
+                </div>
+                <div class="my-form-control">
+                    <div class="my-form-input">
+                        <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'" required>
+                            <option value="001" selected>全部指令</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="my-form-row">
+                <div class="my-form-label">
+                    <label class="requireTag">赋值方式:</label>
+                </div>
+                <div class="my-form-control">
+                    <div class="my-form-input">
+                        <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'" required>
+                            <option value="001" selected>追加</option>
+                            <option value="002">替换</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row_gutter"></div>
+            <div class="info_box">
+                <h3 class="title">说明</h3>
+                <ol>
+                    <li>原始结果（指令实际返回内容）</li>
+                    <li>解析结果（通过该指令解析模版解析后的结果）</li>
+                    <li>清洗结果（经过清洗后的指令内容）</li>
+                    <li>格式化二维表结果（经过解析模版中格式化二维表处理的结果）</li>
+                    <li>异常结果（经过解析模版处理后异常额外信息）</li>
+                    <li>所有结果（包含以上五种结果）</li>
+                    <li>解析模版变量值（经过解析模版处理后的变量值）</li>
+                </ol>
+            </div>
+
+        </form>
+        <div class="var_example">
+            <figure>
+                <figcaption>变量样例参考如下图</figcaption>
+                <img src="../../common/data/cmd_exp_cy_1.png" alt="变量样例" id="exp_img" width="336">
+            </figure>
+        </div>
+    </div>
+    <div class="btn-row">
+        <a href="#" class="easyui-linkbutton primary" data-options="iconCls:'icon-save'">保存</a>
+    </div>
+
+    <script>
+        $(function () {
+            // datagrid init
+            $('#dg').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                toolbar: '#tb',
+                pagination: true,
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskname', sortable: true, width: 200, title: '指令名称' },
+                    { field: 'taskid', sortable: true, width: 200, title: '解析模版' },
+                    { field: 'approval', sortable: true, width: 100, title: '厂家' },
+                    { field: 'emg', sortable: true, width: 200, title: '运行指令' },
+                    { field: 'status', align: 'center', sortable: true, width: 200, title: '是否启用' },
+                    { field: 'init', align: 'center', sortable: true, width: 200, title: '参数配置' },
+                ]],
+            });
+
+            // 详细信息
+            $('.detailLink').on('click', e => {
+                e.preventDefault();
+                openWin('./datagrid_table.html', '详细信息');
+            })
+        });
+    </script>
+</body>
+
+</html>

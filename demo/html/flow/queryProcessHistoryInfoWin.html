@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程编辑器/流程运行日志/指令日志</title>
+    <!-- libs -->
+    <!-- easyui material-teal样式 -->
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/datagrid-detailview.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/icon.css">
+
+    <script src="../../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../../frame/mtips/mtips.css">
+
+    <script src="../../../common/js/openWin.js"></script>
+
+    <!-- 自定义 stylesheet -->
+    <link rel="stylesheet" href="../../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="easyui-layout queryLogPage" data-options="fit:true">
+    <div data-options="region:'center'">
+        <div id="tb" class="flex_toolbar">
+            <form>
+                <div class="form_row">
+                    <div class="col_item">
+                        <label>网元名称:</label><input type="text" class="easyui-textbox sm_width">
+                    </div>
+                    <div class="col_item">
+                        <label>指令名称:</label><input type="text" class="easyui-textbox sm_width">
+                    </div>
+                    <div class="col_item">
+                        <label>执行指令:</label><input type="text" class="easyui-textbox sm_width">
+                    </div>
+                    <div class="col_item">
+                        <label>解析结果:</label><select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                            <option value="0">--请选择--</option>
+                            <option value="1">正常</option>
+                            <option value="2">正常</option>
+                            <option value="3">正常</option>
+                            <option value="4">正常</option>
+                            <option value="5">正常</option>
+                        </select>
+                    </div>
+                    <div class="col_item">
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                           data-options="iconCls:'icon-search-primary'">查询</a>
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                           data-options="iconCls:'icon-export'">批量导出</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <table id="dg"></table>
+    </div>
+    <div title="指令原始log" data-options="region:'east',width:'60%',collapsed:true">
+        <iframe src="history_process_info_tab2.html" frameborder="0" class="tab_ifr"></iframe>
+    </div>
+
+    <!--------------------------- 临时使用的JS ------------------------------>
+    <script>
+        $(function () {
+            // data-grid init
+            $('#dg').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                pagination: true,
+                toolbar: '#tb',
+                columns: [[
+                    { field: 'taskname', sortable: true, width: 200, title: '网元名称' },
+                    { field: 'taskid', align: 'center', width: 200, title: '指令名称' },
+                    { field: 'approval', sortable: true, width: 200, title: '执行指令' },
+                    { field: 'emg', sortable: true, width: 200, title: '解析结果' },
+                    {
+                        field: 'opt', width: 390, align: 'center', title: '操作',
+                        formatter: function (value) {
+                            return `
+                                <a href="javascript:;" class="dg_btn auto_width bg_normal" onclick="openSideWin()">指令原始log</a>
+                                <a href="javascript:;" class="dg_btn auto_width bg_teal">导出指令原始log</a>
+                                <a href="javascript:;" class="dg_btn auto_width bg_normal" onclick="openSideWin()">解析结果详情</a>
+                                <a href="javascript:;" class="dg_btn auto_width bg_teal">导出解析结果详情</a>
+                            `;
+                        }
+                    },
+                ]],
+            });
+        });
+        function openSideWin() {
+            $('body').layout('expand', 'east');
+        }
+
+    </script>
+
+</body>
+
+</html>

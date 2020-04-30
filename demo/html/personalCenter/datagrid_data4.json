@@ -1,0 +1,105 @@
+{
+    "total": 5,
+    "rows": [
+        {
+            "id": 1,
+            "taskid": "20190813112414983",
+            "taskname": "admin的脚本审批2审批",
+            "approval": "管理员",
+            "status": "审批中",
+            "emg": "普通",
+            "starttime": "2019-08-13 11:24:08",
+            "endtime": "2019-08-13 11:24:08",
+            "init": "管理员",
+            "opt": 1,
+            "opt2": "1"
+        },
+        {
+            "id": 2,
+            "taskid": "20190813112414983",
+            "taskname": "admin的脚本审批2审批",
+            "approval": "管理员",
+            "status": "审批中",
+            "emg": "普通",
+            "starttime": "2019-08-13 11:24:08",
+            "endtime": "2019-08-13 11:24:08",
+            "init": "管理员",
+            "opt": 1,
+            "opt2": "2"
+        },
+        {
+            "id": 3,
+            "taskid": "20190813112414983",
+            "taskname": "admin的脚本审批2审批",
+            "approval": "管理员",
+            "status": "审批中",
+            "emg": "普通",
+            "starttime": "2019-08-13 11:24:08",
+            "endtime": "2019-08-13 11:24:08",
+            "init": "管理员",
+            "opt": 1,
+            "opt2": "3",
+            "children": [
+                {
+                    "id": 31,
+                    "taskname": "admin的脚本审批2审批",
+                    "approval": "管理员",
+                    "status": "审批中",
+                    "emg": "普通",
+                    "starttime": "2019-08-13 11:24:08",
+                    "endtime": "2019-08-13 11:24:08",
+                    "opt": 1,
+                    "opt2": "3"
+                },
+                {
+                    "id": 32,
+                    "taskname": "admin的脚本审批2审批",
+                    "approval": "管理员",
+                    "status": "审批中",
+                    "emg": "普通",
+                    "starttime": "2019-08-13 11:24:08",
+                    "endtime": "2019-08-13 11:24:08",
+                    "opt": 0,
+                    "opt2": "4"
+                },
+                {
+                    "id": 34,
+                    "taskname": "admin的脚本审批2审批",
+                    "approval": "管理员",
+                    "status": "审批中",
+                    "emg": "普通",
+                    "starttime": "2019-08-13 11:24:08",
+                    "endtime": "2019-08-13 11:24:08",
+                    "opt": 0,
+                    "opt2": "5"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "taskid": "20190813112414983",
+            "taskname": "admin的脚本审批2审批",
+            "approval": "管理员",
+            "status": "审批中",
+            "emg": "普通",
+            "starttime": "2019-08-13 11:24:08",
+            "endtime": "2019-08-13 11:24:08",
+            "init": "管理员",
+            "opt": 0,
+            "opt2": "4"
+        },
+        {
+            "id": 5,
+            "taskid": "20190813112414983",
+            "taskname": "admin的脚本审批2审批",
+            "approval": "管理员",
+            "status": "审批中",
+            "emg": "普通",
+            "starttime": "2019-08-13 11:24:08",
+            "endtime": "2019-08-13 11:24:08",
+            "init": "管理员",
+            "opt": 0,
+            "opt2": "5"
+        }
+    ]
+}

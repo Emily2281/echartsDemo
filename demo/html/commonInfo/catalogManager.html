@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文件目录管理系统</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <!-- <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/icon.css"> -->
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_commoninfo_b.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body class="catalogMgr flex_page flow_row">
+    <div class="folderTree_div">
+        <div class="folderTree_header">
+            <h2 class="tree-folder-open title">个人目录</h2>
+        </div>
+        <div class="folderTree_wrapper">
+            <ul id="tt"></ul>
+        </div>
+    </div>
+
+    <div class="folderDetail_div">
+        <!-- 工具栏 -->
+        <div id="file_toolbar" class="flex_toolbar">
+            <form>
+                <div class="form_row">
+                    <div class="col_item">
+                        <label>文件名称:</label><input type="text" class="easyui-textbox md_width">
+                    </div>
+                    <div class="col_item">
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                            data-options="iconCls:'icon-search-primary'">查询</a>
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-upload'"
+                            onclick="openWin('./catalogMgrWin.html','上传文件',{autoSize:true})">上传文件</a>
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                            data-options="iconCls:'icon-download'">批量下载</a>
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                            data-options="iconCls:'icon-cancel'">批量删除</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 工具栏 end -->
+        <table id="file_table"></table>
+    </div>
+
+    <script>
+        $(function () {
+            // data-grid init
+            $('#file_table').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fitColumn: true,
+                fit: true,
+                pagination: true,
+                toolbar: '#file_toolbar',
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskname', sortable: true, width: 300, title: '文名称' },
+                    { field: 'starttime', sortable: true, width: 200, title: '修改时间' },
+                    { field: 'opt', width: 175, align:'center', title: '操作', 
+                        formatter: function () {
+                            return `<a href="javascript:;" class="dg_btn bg_normal">下载</a><a href="javascript:;" class="dg_btn bg_danger">删除</a>`;
+                        }
+                    },
+                ]]
+            });
+
+            // tree init
+            $('#tt').tree({
+                method: 'get',
+                url: '../../common/data/tree_data.json',
+                onLoadSuccess: function (node, data) {
+                    $('#tt').tree('expand', $('#tt_easyui_tree_1'));
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

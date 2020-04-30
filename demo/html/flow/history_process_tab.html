@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程编辑器/流程运行日志/流程实例</title>
+    <!-- libs -->
+    <!-- easyui material-teal样式 -->
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/datagrid-detailview.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/icon.css">
+
+    <script src="../../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../../frame/mtips/mtips.css">
+
+    <script src="../../../common/js/openWin.js"></script>
+
+    <!-- 自定义 stylesheet -->
+    <link rel="stylesheet" href="../../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="easyui-layout" data-options="fit:true">
+    <div title="流程实例" data-options="region:'west',width:250,iconCls:'icon-cascade'">
+        <ul id="domainTree"></ul>
+    </div>
+    <div data-options="region:'center'" class="flex_page flex_col">
+        <div class="tab-tb">
+            <form>
+                <div class="form_row">
+                    <div class="col_item">
+                        <label>流程实例:</label>
+                        <input type="text" class="easyui-textbox">
+                    </div>
+                    <div class="col_item">
+                        <label>运行结果:</label>
+                        <select id="runResult" class="easyui-combobox sm_width" data-options="editable:false,panelHeight:'auto'">
+                            <option value="all" class="all" selected>所有</option>
+                            <option value="normal">正常</option>
+                            <option value="abnormal">异常</option>
+                            <option value="flow_abnormal">流程运行异常</option>
+                            <option value="unknown">未知</option>
+                            <option value="flow_unknown">流程未知</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tab-paper">
+            <!-- 此处替换流程图 -->
+            <div id="flowChart" class="GooFlow">
+                <a href="javascript:;" class="easyui-linkbutton" onclick="openWin('history_process_info.html','流程节点信息',{max:true})">节点</a>
+            </div>
+            <!-- 此处替换流程图 -->
+        </div>
+    </div>
+
+
+
+    <script>
+        $(function() {
+            // tree init
+            $('#domainTree').tree({
+                url: '../../../common/data/tree_data.json',
+                method: 'get'
+            });
+
+            $('#runResult').combobox({
+                formatter: function(row) {
+                    return `<span class="colorSample ${row.value}">${row.text}</span>`;
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

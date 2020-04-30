@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>变量检索列表</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="script_node">
+    <div id="tb" class="flex_toolbar">
+        <form>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>变量名称:</label>
+                    <input type="text" class="easyui-textbox sm_width">
+                </div>
+                <div class="col_item">
+                    <label>变量分类:</label>
+                    <select class="easyui-combobox sm_width" data-options="editable:false,panelHeight:'auto'">
+                        <option value="001" selected>全部</option>
+                        <option value="002">节点定义变量</option>
+                        <option value="003">流程定义变量</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <label class="my_checkbox2"><input type="checkbox">当前节点</label>
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                        data-options="iconCls:'icon-search-primary'">查询</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm primary" data-options="iconCls:'icon-ok'">选择</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-cancel'">取消</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table id="dg"></table>
+
+    <script>
+        $(function () {
+            // 1. 业务配置
+            $('#dg').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                pagination: true,
+                toolbar: '#tb',
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskname', sortable: true, width: '40%', title: '变量名' },
+                    { field: 'taskid', sortable: true, width: '40%', title: '变量分类' },
+                ]],
+            });
+
+        });
+
+        // 切换高级模式
+        function toggleAdv($btn) {
+            let onText = '关闭高级模式', offText = '打开高级模式';
+            let isOff = $('#advMode').toggleClass('hide').hasClass('hide');
+            $btn.find('.l-btn-icon').toggleClass('icon-tip-off', !isOff);
+            if (!isOff) {
+                $btn.find('.l-btn-text').text(onText);
+                $('#advMode').find('.easyui-numberbox').numberbox();
+            } else {
+                $btn.find('.l-btn-text').text(offText);
+            }
+            $('#dg').datagrid('resize', { fit: true });
+        }
+
+        // datagrid - 值类型 - 变量 - 打开变量检索页面
+        function openVarWin() {
+            openWin('var_list.html', '变量检索页面', { max: true });
+        }
+
+    </script>
+</body>
+
+
+
+
+</html>

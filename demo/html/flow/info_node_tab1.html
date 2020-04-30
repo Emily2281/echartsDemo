@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>信息处理节点/业务配置</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body class="info_node">
+    <div class="flex_toolbar">
+        <form>
+            <div class="col_item">
+                <label><span class="requireTag">节点名称:</span></label>
+                <input class="easyui-textbox lg_width" data-options="prompt:'信息处理节点 - 结果呈现/下载'">
+            </div>
+            <div class="col_item">
+                <label><span class="requireTag">操作模式:</span></label>
+                <select id="node_model_id" class="easyui-combobox sm_width"
+                    data-options="panelHeight:'auto',editable:false">
+                    <option value="result" selected>结果呈现/下载</option>
+                    <option value="wechat">微信推送</option>
+                    <option value="alert">告警推送</option>
+                </select>
+            </div>
+            <div class="col_item">
+                <a href="#" class="easyui-linkbutton btn_sm primary" data-options="iconCls:'icon-save'">保存</a>
+            </div>
+        </form>
+    </div>
+    <h4 class="panel_title">信息处理参数配置:</h4>
+    <!-- 告警推送 -->
+    <iframe class="panel_ifr" src="info_node_alert.html" frameborder="0"></iframe>
+
+    <script>
+        $(function () {
+            // 切换模式
+            $('#node_model_id').combobox(
+                {
+                    onChange: function (newValue, oldValue) {
+                        $('.panel_ifr').attr('src', 'info_node_' + newValue + '.html');
+                    }
+                });
+
+        });
+
+        
+    </script>
+</body>
+
+
+
+
+</html>

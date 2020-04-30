@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>调整脚本界面</title>
+    <!-- easyui js 文件 -->
+    <script src="Frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="Frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="Frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="Frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <link rel="stylesheet" href="Frame/BeAlert-master/BeAlert.css">
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="css/my.base.css">
+    <link href="css/icons-svg.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/extra.css">
+
+
+    <script src="Frame/BeAlert-master/BeAlert.js"></script>
+    <script src="Frame/clipboard.js-master/dist/clipboard.min.js"></script>
+    <script src="common/js/mask.js"></script>
+    <script src="common/js/public.js"></script>
+    <script src="common/js/dowloadFile.js"></script>
+
+    <script src="js/scriptNearList.js"></script>
+
+</head>
+<body class="extra" style="height:calc(100vh - 10px)">
+    <div id="scriptLayout" class="easyui-layout" data-options="fit:true">
+        <div title="  " data-options="region:'north',collapsible:false" style="height: 50%;">
+            <div style="margin: 8px">
+                <div class="form_row" >
+                    <div class="col_item" style="width: 50%">拥塞小区调整脚本：</div>
+                    <div class="col_item" style="width: 40%;text-align: right">厂家：<span id="highFactory"></span></div>
+                </div>
+                <div class="form_row" style="margin-bottom: 10px">
+                    <div class="col_item" style="width: 90%" id="highText"></div>
+                    <div class="col_item" style="width: 8%;">
+                        <img onclick="copyFun($(this))" title="复制" src="img/copy.svg" class="extraImg copyBtn">
+                        <span style="display: none"></span>
+                    </div>
+                </div>
+                <div class="form_row">
+                    <div class="col_item" style="width: 50%">候选邻区调整脚本：</div>
+                    <div class="col_item" style="width: 40%;text-align: right">厂家：<span id="nearFactory"></span></div>
+                </div>
+                <div id="nearText"></div>
+            </div>
+        </div>
+        <div title="  " data-options="region:'center'">
+            <div style="margin: 8px">
+                <div class="form_row">
+                    <div class="col_item" style="width: 50%">拥塞小区回调脚本：</div>
+                    <div class="col_item" style="width: 40%;text-align: right">厂家：<span id="highCallFactory"></span></div>
+                </div>
+                <div class="form_row" style="margin-bottom: 10px">
+                    <div class="col_item" style="width: 90%" id="highCallText"></div>
+                    <div class="col_item" style="width: 8%;">
+                        <img onclick="copyFun($(this))" title="复制" src="img/copy.svg" class="extraImg copyBtn">
+                        <span style="display: none"></span>
+                    </div>
+                </div>
+                <div class="form_row">
+                    <div class="col_item" style="width: 50%">候选邻区回调脚本：</div>
+                    <div class="col_item" style="width: 40%;text-align: right">厂家：<span id="nearCallFactory"></span></div>
+                </div>
+                <div id="nearCallText"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+/* 流程实例结果信息查询 */
+.inst_result_detail {
+    padding: 10px;
+}
+.inst_result_detail .page_title {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+.inst_result_detail h2 {
+    font-size: 14px;
+    line-height: 26px;
+    margin: 0 10px 0 0;
+    padding: 5px 10px 5px 10px;
+    display: inline-block;
+    position: relative;
+    color: #0fa6d3;
+    border-radius: 4px 0 0 4px;
+    background-color: #f8f9fa;
+}
+
+.inst_result_detail .title_content {
+    display: inline-block;
+}
+.inst_result_detail .page_wrapper {
+    margin-top: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+.inst_result_detail h3 {
+    margin: 0;
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 26px;
+    background-color: #f8f9fa;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid #ced4da;
+    position: relative;
+    color: #0fa6d3;
+}
+.inst_result_detail h3::before {
+    left: 0;
+}
+.inst_result_detail .page_content {
+    margin: 10px;
+    padding: 10px;
+}
+.inst_result_detail .page_wrapper table {
+    margin: 10px auto;
+    width: 98%;
+    border-collapse: collapse;
+    border: 2px solid #ced4da;
+    table-layout: fixed;
+}
+.inst_result_detail .page_wrapper tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+.inst_result_detail .page_wrapper th,
+.inst_result_detail .page_wrapper td {
+    border: 1px solid #ced4da;
+    padding: 5px;
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>变量检索列表</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <!-- <link rel="stylesheet" href="../../common/css/my_flow_nodes.css"> -->
+    <link rel="stylesheet" href="./var_list.css">
+</head>
+
+<body class="var_search">
+    <div class="var_type_bar">
+        <div class="form_row">
+            <div class="col_item">
+                <input type="radio" name="var_type" id="listBtn_1">
+                <label for="listBtn_1">自定义变量</label>
+            </div>
+            <div class="col_item">
+                <input type="radio" name="var_type" id="listBtn_2" checked>
+                <label for="listBtn_2">内置变量</label>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义 -->
+    <div class="var_type_box hide">
+        <div id="tb" class="flex_toolbar">
+            <form>
+                <div class="form_row">
+                    <div class="col_item">
+                        <label>变量名称:</label>
+                        <input type="text" class="easyui-textbox sm_width">
+                    </div>
+                    <div class="col_item">
+                        <label>变量分类:</label>
+                        <select class="easyui-combobox sm_width" data-options="editable:false,panelHeight:'auto'">
+                            <option value="001" selected>全部</option>
+                            <option value="002">节点定义变量</option>
+                            <option value="003">流程定义变量</option>
+                        </select>
+                    </div>
+                    <div class="col_item">
+                        <label class="my_checkbox2"><input type="checkbox">当前节点</label>
+                    </div>
+                    <div class="col_item">
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                           data-options="iconCls:'icon-search-primary'">查询</a>
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm primary"
+                           data-options="iconCls:'icon-ok'">选择</a>
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                           data-options="iconCls:'icon-cancel'">取消</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <table id="dg"></table>
+    </div>
+    <!-- 内置 -->
+    <div class="var_type_box">
+        <div class="built_var">
+            <div class="header_row">系统内置变量</div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>变量</label>
+                    <select class="easyui-combobox lg_width" data-options="editable:false,panelHeight:200">
+                        <option value="time" selected>时间变量</option>
+                        <option value="001">[流程实例id]</option>
+                        <option value="002">[父流程实例id]</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm primary"
+                       data-options="iconCls:'icon-save'">保存</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-cancel'">取消</a>
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>时间格式</label>
+                    <select class="easyui-combobox lg_width" data-options="editable:false,panelHeight:200">
+                        <option value="001" selected>yyyy-MM-dd HH:mm:ss</option>
+                        <option value="002">yyyy-MM-dd HH:mm:ss</option>
+                        <option value="003">yyyy-MM-dd HH:mm:ss</option>
+                        <option value="004">yyyy-MM-dd HH:mm:ss</option>
+                        <option value="005">yyyy-MM-dd HH:mm:ss</option>
+                        <option value="006">yyyy-MM-dd HH:mm:ss</option>
+                        <option value="007">yyyy-MM-dd HH:mm:ss</option>
+                        <option value="008">yyyy-MM-dd HH:mm:ss</option>
+                        <option value="009">yyyy-MM-dd HH:mm:ss</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                       data-options="iconCls:'icon-preview'">预览</a>
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>间隔</label>
+                    <input type="text" class="easyui-textbox lg_width">
+                </div>
+                <div class="col_item">
+                    <span class="text_danger">(负数为过去时间，正数为未来时间，0为当前时间)</span>
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>单位</label>
+                    <select class="easyui-combobox lg_width" data-options="editable:false,panelHeight:200">
+                        <option value="001" selected>年</option>
+                        <option value="002">年</option>
+                        <option value="003">年</option>
+                        <option value="004">年</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>语言</label>
+                    <select class="easyui-combobox lg_width" data-options="editable:false,panelHeight:200">
+                        <option value="001" selected>中文</option>
+                        <option value="002">英文</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>样例结果</label>
+                    <span class="preview_span text_danger">2020-01-16 14:50:03</span>
+                </div>
+            </div>
+            <div class="info_box">
+                <h3 class="title">说明</h3>
+                <table>
+                    <tr>
+                        <td>yyyy：年</td>
+                        <td>E：星期几</td>
+                    </tr>
+                    <tr>
+                        <td>MM：月</td>
+                        <td>D：一年中的第几天</td>
+                    </tr>
+                    <tr>
+                        <td>dd：日</td>
+                        <td>F：一月中的第几个星期(会把这个月总共过的天数除以7)</td>
+                    </tr>
+                    <tr>
+                        <td>hh：1~12小时制(1-12)</td>
+                        <td>w：一年中的第几个星期</td>
+                    </tr>
+                    <tr>
+                        <td>HH：24小时制(0-23)</td>
+                        <td>W：一月中的第几星期(会根据实际情况来算)</td>
+                    </tr>
+                    <tr>
+                        <td>mm：分</td>
+                        <td>a：上下午标识</td>
+                    </tr>
+                    <tr>
+                        <td>ss：秒</td>
+                        <td>k：和HH差不多，表示一天24小时制(1-24</td>
+                    </tr>
+                    <tr>
+                        <td>S：毫秒</td>
+                        <td>K：和hh差不多，表示一天12小时制(0-11)</td>
+                    </tr>
+                    <tr>
+                        <td>z：表示时区</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            // 1. 初始化datagrid
+            var initDg = (function() {
+                var isInited = false;
+                return function () {
+                    if (!isInited) {
+                        $.parser.parse($('#tb'));
+                        $('#dg').datagrid({
+                            rownumbers: true,
+                            singleSelect: true,
+                            url: '../../common/data/datagrid_data3.json',
+                            method: 'get',
+                            fit: true,
+                            pagination: true,
+                            toolbar: '#tb',
+                            columns: [[
+                                { field: 'ck', checkbox: true },
+                                { field: 'taskname', sortable: true, width: '40%', title: '变量名' },
+                                { field: 'taskid', sortable: true, width: '40%', title: '变量分类' },
+                            ]],
+                            onLoadSuccess: function() {
+                                isInited = true;
+                            }
+                        });
+                    }
+                }
+            })();
+
+            $('[name="var_type"]').each(function (idx, radio) {
+                $(radio).on('change', function () {
+                    if ($(this).is(':checked')) {
+                        $('.var_type_box')
+                            .addClass('hide')
+                            .eq(idx).removeClass('hide');
+                        if ($(this).find('#dg')) initDg();
+                    }
+                })
+            })
+
+        });
+
+    </script>
+</body>
+
+
+
+
+</html>

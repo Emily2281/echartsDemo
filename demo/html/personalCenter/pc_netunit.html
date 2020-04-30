@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心 / 我的配置 / 网元</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="pc.css">
+</head>
+
+<body>
+    <div id="tb" class="flex_toolbar">
+        <form>
+            <div class="form_row">
+                <div class="col_item">
+                    <label class="sm_width">关键词:</label>
+                    <input type="text" class="easyui-textbox sm_width">
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                       data-options="iconCls:'icon-settings'"
+                       onclick="openWin('cfgPc.html','流程展示配置',{max:true});">展示配置</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                       data-options="iconCls:'icon-search-primary'">查询</a>
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-export'">导出</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table id="dg"></table>
+
+    <script>
+        $(function () {
+            $('#dg').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                pagination: true,
+                toolbar: '#tb',
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskname', sortable: true, width: 200, title: '网元名称' },
+                    { field: 'taskid', sortable: true, width: 200, title: '网元类型' },
+                    { field: 'approval', sortable: true, width: 100, title: '网元IP' },
+                    { field: 'opt', align: 'center', sortable: true, width: 100, title: '来源&nbsp;<i class="help" data-mtips="网元基础数据的来源，基础数据包括：</br>网元名称、网元类型、网元IP、厂家、设备型号、业务状态">?</i>' },
+                    { field: 'init', sortable: true, width: 100, title: '来源' },
+                    { field: 'emg', sortable: true, width: 200, title: '网元类型名称' },
+                    { field: 'status', align: 'center', sortable: true, width: 200, title: '选择属性名称' },
+                ]],
+            });
+        })
+    </script>
+</body>
+
+</html>

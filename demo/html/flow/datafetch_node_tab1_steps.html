@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程 / 可视化操作模拟节点 / 业务配置 / 步骤</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="datafetch_page">
+    <div class="dg_wrapper">
+        <div id="query_steps_tb">
+            <form>
+                <div class="form_row">
+                    <div class="col_item">
+                        <label>元素名称:</label>
+                        <input type="text" class="easyui-textbox lg_width">
+                    </div>
+                    <div class="col_item">
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                           data-options="iconCls:'icon-search-primary'">查询</a>
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm primary"
+                           data-options="iconCls:'icon-save'">保存</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <table id="query_steps_tab" class="easyui-datagrid"></table>
+    </div>
+
+    <script>
+        $(function () {
+            // datagrid init
+            function getDgOpts(toolbarId) {
+                return {
+                    rownumbers: false,
+                    singleSelect: true,
+                    url: '../../common/data/datagrid_data3.json',
+                    method: 'get',
+                    fit: true,
+                    width: '98%',
+                    pagination: true,
+                    toolbar: toolbarId,
+                    columns: [[
+                        { field: 'ck', checkbox: true },
+                        { field: 'emg', sortable: true, width: 50, title: '序号' },
+                        { field: 'taskname', sortable: true, width: 200, title: '元素名称' },
+                        { field: 'emg', sortable: true, width: 120, title: '元素标识' },
+                        { field: 'opt', sortable: true, width: 120, title: '标识类型' },
+                        { field: 'opt2', sortable: true, width: 120, title: '描述' },
+                        { field: 'approval', sortable: true, width: 120, title: '元素类型' },
+                        { field: 'init', sortable: true, width: 120, title: '动作' },
+                        { field: 'opt', sortable: true, width: 120, title: '值输入' },
+                    ]],
+                };
+            }
+            $('#query_steps_tab').datagrid(getDgOpts('#query_steps_tb'));
+        });
+    </script>
+</body>
+
+</html>

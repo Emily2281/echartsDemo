@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程 / 可视化操作模拟节点 / 业务配置 / 组件操作配置</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="add_df_node">
+    <form class="my-win-form">
+        <!-- 元素名称 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">元素名称:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'" required>
+                </div>
+            </div>
+        </div>
+        <!-- 元素标识 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">元素标识:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input"
+                     data-mtips="支持变量引用，如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列；<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列；<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',prompt:'支持变量引用'" required>
+                </div>
+            </div>
+        </div>
+        <!-- 标识类型 [id,path,url,name,class] -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">标识类型:</label>
+            </div>
+            <div class="my-form-control">
+                <select class="easyui-combobox" data-options="editable:false,width:'100%',panelHeight:'auto'">
+                    <option value="001" selected>id</option>
+                    <option value="002">id</option>
+                    <option value="003">id</option>
+                </select>
+            </div>
+        </div>
+        <!-- 元素类型 [输入框,选择框,按钮,表格,超链接,iframe,文本] -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">元素类型:</label>
+            </div>
+            <div class="my-form-control">
+                <select class="easyui-combobox" data-options="editable:false,width:'100%',panelHeight:'auto'">
+                    <option value="001" selected>输入框</option>
+                    <option value="002">id</option>
+                    <option value="003">id</option>
+                </select>
+            </div>
+        </div>
+        <!-- 描述 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>描述:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'">
+                </div>
+            </div>
+        </div>
+        <!-- 动作 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">动作:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="editable:false,width:'100%',panelHeight:'auto'">
+                        <option value="1">单击</option>
+                        <option value="8">双击</option>
+                        <option value="2" selected>取数</option>
+                        <option value="3">跳转iframe</option>
+                        <option value="4">输入</option>
+                        <option value="6">休眠</option>
+                        <option value="7">重复步骤</option>
+                        <option value="9">悬停</option>
+                        <option value="10">附件上传</option>
+                    </select>
+                </div>
+                <div class="my-form-button">
+                    &nbsp;<select class="easyui-combobox xs_width" data-options="editable:false,panelHeight:'auto'">
+                        <option value="replace" selected>替换</option>
+                        <option value="add">追加</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- 值输入 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>值输入:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',prompt:'支持变量引用'">
+                </div>
+                <div class="my-form-button">
+                    <label class="my_checkbox2"><input type="checkbox">敏感信息</label>
+                </div>
+            </div>
+        </div>
+        <!-- 动作:取数 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>下页元素标识:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input"
+                     data-mtips="支持变量引用，如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列；<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列；<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',prompt:'支持变量引用'">
+                </div>
+                <div class="my-form-button">
+                    <i class="help" data-mtips="不配置，默认取第一页">?</i>
+                </div>
+            </div>
+        </div>
+        <!-- 下页标识类型 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>下页标识类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="editable:false,width:'100%',panelHeight:'auto'">
+                        <option value="xpath" selected>xpath</option>
+                        <option value="id">id</option>
+                        <option value="name">name</option>
+                        <option value="class">class</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- 表格页数 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>表格页数:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input"
+                     data-mtips="支持变量引用，如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列；<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列；<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',prompt:'支持变量引用'">
+                </div>
+                <div class="my-form-button">
+                    <i class="help" data-mtips="不配置，默认取第一页；<br>如果配置页数大于实际页数，则取实际页数；<br>如果配置页数小于实际页数，则取配置页数">?</i>
+                </div>
+            </div>
+        </div>
+        <!-- 动作:取数:是否配置期待值 -->
+        <div class="my-form-row">
+            <div class="my-form-label"><label></label></div>
+            <div class="my-form-control">
+                <label class="my_checkbox2"><input type="checkbox">是否配置期待值</label>
+            </div>
+        </div>
+        <!-- 动作:取数:期待值 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">期待值:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input"
+                     data-mtips="支持变量引用，如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列；<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列；<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',prompt:'支持变量引用'" required>
+                </div>
+            </div>
+        </div>
+        <!-- 动作:取数:尝试次数 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">尝试次数:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'" required>
+                </div>
+            </div>
+        </div>
+        <!-- 动作:取数:等待时间 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">等待时间:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',prompt:'单位:秒'" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- 动作:休眠:循环次数 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">循环次数:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'" required>
+                </div>
+            </div>
+        </div>
+        <!-- 动作:休眠:休眠时间 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">休眠时间:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',prompt:'单位:秒'" required>
+                </div>
+                <div class="my-form-button">
+                    <label class="my_checkbox2"><input type="checkbox">刷新页面</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 动作:重复步骤:重复步骤 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">重复步骤:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',icons:[{
+                        iconCls:'icon-search',
+                        handler:function(){}
+                    }]">
+                </div>
+            </div>
+        </div>
+
+        <!-- 动作:附件上传 [动态生成,本地上传,远程加载] -->
+        <!-- 附件来源 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>附件来源:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <div class="col_item">
+                        <label for="dybuild"><input type="radio" name="attachSource" id="dybuild" checked>动态生成</label>
+                    </div>
+                    <div class="col_item">
+                        <label for="localUp"><input type="radio" name="attachSource" id="localUp">本地上传</label>
+                    </div>
+                    <div class="col_item">
+                        <label for="remoteUp"><input type="radio" name="attachSource" id="remoteUp">远程加载</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 附件来源:本地 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">附件标题:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input"
+                     data-mtips="支持变量引用，如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列；<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列；<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',prompt:'支持变量引用'">
+                </div>
+            </div>
+        </div>
+        <!-- 附件内容 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">附件内容:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input"
+                     data-mtips="支持变量引用，如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列；<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列；<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',prompt:'支持变量引用'">
+                </div>
+            </div>
+        </div>
+        <!-- 附件类型 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">附件类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="editable:false,width:'100%',panelHeight:'auto'">
+                        <option value="txt" selected>txt</option>
+                        <option value="xlsx">xlsx</option>
+                        <option value="csv">csv</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- 附件来源:本地上传 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label></label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-filebox"
+                           data-options="width:'100%',buttonIcon:'icon-upload',buttonText:'选取文件'">
+                </div>
+            </div>
+        </div>
+        <!-- 附件来源:远程加载 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">存储类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <div class="col_item">
+                        <label for="remote_local" class="txtLeft"><input type="radio" name="storageType"
+                                   id="remote_local" checked>本地</label>
+                    </div>
+                    <div class="col_item">
+                        <label for="remote_server" class="txtLeft"><input type="radio" name="storageType"
+                                   id="remote_server">远程</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 附件来源:远程加载:远程:远程服务器 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag" data-mtips="当目录为变量引用时，仅支持在个人目录下操作">远程服务器:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'">
+                </div>
+                <div class="my-form-input hide">
+                    <input type="text" class="easyui-combotree" data-options="width:'100%'">
+                </div>
+            </div>
+        </div>
+        <!-- 附件来源:远程加载:本地+远程:目录 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag" data-mtips="当目录为变量引用时，仅支持在个人目录下操作">目录:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'">
+                </div>
+                <div class="my-form-input hide">
+                    <input type="text" class="easyui-combotree" data-options="width:'100%'">
+                </div>
+                <div class="my-form-button">
+                    <label class="my_checkbox2"><input type="checkbox">变量引用</label>
+                </div>
+            </div>
+        </div>
+        <!-- 附件来源:远程加载:本地+远程:文件 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">文件:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="editable:false,width:'30%',panelHeight:'auto'">
+                        <option value="keyword" selected>关键字</option>
+                        <option value="regex">正则</option>
+                    </select>
+                    <input type="text" class="easyui-textbox" data-options="width:'60%'">
+                </div>
+            </div>
+            <div class="my-form-label">
+                <label>文件类型:</label>
+            </div>
+            <div class="my-form-control auto_width">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="editable:false,width:'100%',panelHeight:'auto'">
+                        <option value="000" selected>请选择</option>
+                        <option value="txt">txt</option>
+                        <option value="csv">csv</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- 序号 -->
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">序号:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'">
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+    <div class="btn-row">
+        <a href="javascript:;" class="easyui-linkbutton btn_sm primary" data-options="iconCls:'icon-save'">保存</a>
+    </div>
+
+    <script>
+        $('.easyui-textbox').textbox({
+            tipPosition: 'top'
+        });
+    </script>
+
+</body>
+
+
+
+
+</html>

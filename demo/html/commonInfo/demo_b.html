@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常用信息管理 Demo</title>
+    <link href="../../common/img/favicon.ico" mce_href="../../common/img/favicon.ico" rel="bookmark" type="image/x-icon">
+    <link href="../../common/img/favicon.ico" mce_href="../../common/img/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="../../common/img/favicon.ico" mce_href="../../common/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/icon.css">
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+    <style>
+        body,
+        div {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #f8f9fa;
+            overflow: hidden;
+        }
+
+        .current {
+            border-color: #007bff;
+            position: relative;
+            overflow: initial;
+        }
+        .current::after {
+            content: '';
+            display: block;
+            border: 6px solid;
+            border-color: transparent transparent transparent #007bff;
+            border-right-width: 0;
+            position: absolute;
+            top: 50%;
+            margin-top: -6px;
+            right: -6px;
+        }
+
+        .app {
+            position: absolute;
+            left: 190px;
+            right: 0;
+            top: 90px;
+            bottom: 0;
+            padding: 5px;
+            background-color: #fff;
+            border: 1px solid #e9ecef;
+        }
+
+        .app iframe {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body id="demo">
+    <div class="wrapper">
+        <h1>常用信息管理 Demo: Part B</h1>
+        <ul>
+            <li><a href="interfaceManager.html" target="app" class="easyui-linkbutton current"
+                    data-options="iconCls:'icon-script'">第三方接口管理</a></li>
+            <li class="row_gutter"></li>
+            <li><a href="remoteFtpServer.html" target="app" class="easyui-linkbutton"
+                    data-options="iconCls:'icon-script'">远程FTP服务器管理</a></li>
+            <li class="row_gutter"></li>
+            <li><a href="visual_simulate_cfg.html" target="app" class="easyui-linkbutton"
+                    data-options="iconCls:'icon-script'">第三方系统管理</a></li>
+            <li class="row_gutter"></li>
+            <li><a href="mailInfo.html" target="app" class="easyui-linkbutton"
+                    data-options="iconCls:'icon-script'">邮箱管理</a></li>
+            <li class="row_gutter"></li>
+            <li><a href="catalogManager.html" target="app" class="easyui-linkbutton"
+                    data-options="iconCls:'icon-script'">文件目录管理</a></li>
+            <li class="row_gutter"></li>
+            <li><a href="databaseCfg.html" target="app" class="easyui-linkbutton"
+                    data-options="iconCls:'icon-script'">数据库管理</a></li>
+            <li class="row_gutter"></li>
+            <li><a href="proxyCfg.html" target="app" class="easyui-linkbutton"
+                    data-options="iconCls:'icon-script'">代理管理</a></li>
+            <li class="row_gutter"></li>
+        </ul>
+    </div>
+    <div class="app">
+        <iframe src="interfaceManager.html" frameborder="0" name="app"></iframe>
+    </div>
+
+    <script>
+        window.onload = function() {
+            document.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', ev => {
+                    document.querySelectorAll('a').forEach(link => {
+                        link.classList.remove('current')
+                    });
+                    a.classList.add('current');
+                })
+            })
+        }
+    </script>
+</body>
+
+</html>

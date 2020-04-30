@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>信息处理节点/业务配置/结果呈现下载</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body id="result_dl" class="info_node panel_content">
+    <div class="form_row">
+        <div class="col_item"
+            data-mtips="支持变量引用，如：<br></td>[1,2]，表示获取变量var1的第一、二列；<br/>[*]表示获取所有列；<br/>[*][1,2] 表示行数不限，列数取第一列和第二列；<br/>[3].#dataid获取变量var1第3列dataid属性的值。">
+            <label><span class="requireTag">信息描述:</span></label>
+            <input type="text" class="easyui-textbox xl_width" data-options="prompt:'支持变量引用'">
+        </div>
+        <div class="col_item">
+            <label class="my_checkbox2"><input type="checkbox">显示在运行信息的标题</label>
+        </div>
+    </div>
+    <div class="form_row var_select_row">
+        <div class="col_item">
+            <label><span class="requireTag">信息明细:</span></label>
+            <input type="text" class="easyui-textbox xl_width" data-options="multiline:true, height:300">
+        </div>
+        <div class="col_item var_select_box">
+            <div class="easyui-panel" title="变量选择" data-options="fit:true">
+                <div class="easyui-tabs" data-options="border:'false',fit:true">
+                    <div title="自定义变量">
+                        <div class="filter_bar">
+                            <input class="easyui-textbox md_width">
+                            <a href="javacript:;" class="easyui-linkbutton btn_sm">查询</a>
+                            <i class="help help_mtips"
+                                data-mtips="支持变量引用,如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列;<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列。<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">?</i>
+                        </div>
+                        <div class="var_select_div">
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">agg_v1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">base_1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">非常长 very long</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                        </div>
+                    </div>
+                    <div title="流程定义变量">
+                        <div class="filter_bar">
+                            <input class="easyui-textbox md_width">
+                            <a href="javacript:;" class="easyui-linkbutton btn_sm">查询</a>
+                            <i class="help help_mtips"
+                                data-mtips="支持变量引用,如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列;<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列。<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">?</i>
+                        </div>
+                        <div class="var_select_div">
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">agg_v1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">base_1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">非常长 very long</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">变量</a>
+                        </div>
+                    </div>
+                    <div title="系统内置变量">
+                        <div class="filter_bar">
+                            <input class="easyui-textbox md_width">
+                            <a href="javacript:;" class="easyui-linkbutton btn_sm">查询</a>
+                            <i class="help help_mtips"
+                                data-mtips="支持变量引用,如：<br/>${var1}[1,2]，表示获取变量var1的第一、二列;<br/>${var1}[*]表示获取所有列；<br/>${var1}[*][1,2] 表示行数不限，列数取第一列和第二列。<br/>${var1}[3].#dataid获取变量var1第3列dataid属性的值。">?</i>
+                        </div>
+                        <div class="var_select_div">
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">agg_v1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">base_1</a>
+                            <a href="javascript:;" class="easyui-linkbutton tag_color_2 btn_sm"
+                                data-options="iconCls:'icon-script'">非常长 very long</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row_gutter"></div>
+    <div class="form_row">
+        <div class="col_item">
+            <label class="my_checkbox2" for="isdownload"><input type="checkbox" id="isdownload"
+                    name="isdownload">启用下载:</label>
+        </div>
+    </div>
+    <div class="form_row download_row hide">
+        <div class="col_item">
+            <label><span class="requireTag">目录:</span></label>
+            <select class="easyui-combotree lg_width"
+                data-options="panelHeight:200,editable:false,url:'../../common/data/tree_data.json',method:'get'"></select>
+        </div>
+        <div class="col_item">
+            <label><span class="requireTag">文件名:</span></label>
+            <input type="text" class="easyui-textbox lg_width" data-options="prompt:'支持变量引用'">
+        </div>
+        <div class="col_item">
+            <a href="javascript:;" class="square-btn icon-add" onclick="addDlRow($(this))"></a>
+            <a href="javascript:;" class="square-btn minus" onclick="removeDlRow($(this))"></a>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            // 启用下载
+            $('#isdownload').on('change', function (e) {
+                if ($(this).prop('checked')) {
+                    $('.download_row').removeClass('hide')
+                        .find('.easyui-combotree').combotree().end()
+                        .find('.easyui-textbox').textbox();
+                } else {
+                    $('.download_row').addClass('hide');
+                }
+            });
+        })
+
+        // 新增一行
+        function addDlRow($btn) {
+            let newRow = `<div class="form_row download_row">
+                <div class="col_item">
+                    <label><span class="requireTag">目录:</span></label>
+                    <select class="easyui-combotree lg_width" data-options="panelHeight:200,editable:false,url:'../../common/data/tree_data.json',method:'get'"></select>
+                </div>
+                <div class="col_item">
+                    <label><span class="requireTag">文件名:</span></label>
+                    <input type="text" class="easyui-textbox lg_width" data-options="prompt:'支持变量引用'">
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="square-btn icon-add" onclick="addDlRow($(this))"></a>
+                    <a href="javascript:;" class="square-btn minus" onclick="removeDlRow($(this))"></a>
+                </div>
+            </div>`;
+            $(newRow).insertAfter($btn.closest('.download_row'))
+                .find('.easyui-textbox').textbox().end()
+                .find('.easyui-combotree').combotree();
+        }
+
+        // 减少一行
+        function removeDlRow($btn) {
+            let $row = $btn.closest('.download_row');
+            if ($row.parent().find('.download_row').length > 1) {
+                $row.remove();
+            }
+        }
+    </script>
+</body>
+
+
+
+
+</html>

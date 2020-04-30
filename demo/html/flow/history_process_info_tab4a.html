@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程编辑器/流程运行日志/流程实例/流程节点信息/节点爬虫日志(循环)</title>
+    <!-- libs -->
+    <!-- easyui material-teal样式 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/datagrid-detailview.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/icon.css">
+
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- 自定义 stylesheet -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="full_page_height">
+    <div id="tb_outter" class="log_tb">
+        <div class="col_item">
+            <label>循环条件:</label>
+            <input type="text" class="easyui-textbox lg_width">
+        </div>
+        <div class="col_item">
+            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+               data-options="iconCls:'icon-search-primary'">查询</a>
+        </div>
+    </div>
+    <table id="dg_outter"></table>
+</body>
+
+<script>
+    $(function () {
+        var optsOutter = {
+            rownumbers: false,
+            url: '../../common/data/datagrid_data2.json',
+            method: 'get',
+            fit: true,
+            toolbar: '#tb_outter',
+            pagination: true,
+            showHeader: false,
+            pageSize: 3,
+            pageList: [3,5,7],
+            columns: [[
+                {
+                    field: 'taskname', align: 'left', width: '100%', title: '操作类别',
+                    formatter: function (value, row, rowIndex) {
+                        return `
+                            <div class="dg_inner_wrapper" style="margin: 10px;">
+                                <div class="tb_inner">【循环次数】循环次数<span class="loopNum">${rowIndex}</span></div>
+                                <table id="dgInner_${rowIndex}"></table>
+                            </div>
+                        `;
+                    }
+                },
+
+            ]],
+            onLoadSuccess: function (data) {
+                $('.dg_inner_wrapper').children('table').datagrid(optsInner);
+            }
+        }
+        var optsInner = {
+            rownumbers: false,
+            singleSelect: true,
+            url: '../../common/data/datagrid_data3.json',
+            method: 'get',
+            height: 200,
+            pagination: false,
+            columns: [[
+                { field: 'taskname', align: 'left', width: 200, title: '操作类别' },
+                { field: 'taskid', align: 'left', width: 500, title: '内容' },
+                { field: 'opt2', align: 'left', width: 280, title: '操作结果' },
+                { field: 'emg', align: 'left', width: 200, title: '描述' },
+            ]],
+            onLoadSuccess: function (data) {
+                var merges = [{
+                    index: 0,
+                    rowspan: 2
+                }, {
+                    index: 2,
+                    rowspan: 4
+                }];
+                for (var i = 0; i < merges.length; i++) {
+                    $(this).datagrid('mergeCells', {
+                        index: merges[i].index,
+                        field: 'taskname',
+                        rowspan: merges[i].rowspan,
+                    });
+                }
+
+            }
+        }
+        $('#dg_outter').datagrid(optsOutter);
+    })
+</script>
+
+</html>

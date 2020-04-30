@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>远程FTP服务器管理 / 新建修改FTP服务器</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_commoninfo_b.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body class="mailInfoWin">
+    <form class="my-win-form xl_width">
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">服务器名称:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',tipPosition:'bottom'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">服务器IP:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',tipPosition:'bottom'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">服务器端口:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',tipPosition:'bottom'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">用户名:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%',tipPosition:'bottom'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">密码:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="password" class="easyui-textbox" data-options="width:'100%',tipPosition:'bottom'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">服务器类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="002" selected>ftp</option>
+                        <option value="003">sftp</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">服务器编码:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="002" selected>UTF-8</option>
+                        <option value="003">GBK</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">数据类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="002" selected>公有</option>
+                        <option value="003">私有</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="btn-row">
+        <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-expShare'">测试</a>
+        <a href="javascript:;" class="easyui-linkbutton btn_sm primary" data-options="iconCls:'icon-ok'">提交</a>
+    </div>
+
+
+    <script>
+    </script>
+
+</body>
+
+</html>

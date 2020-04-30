@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第三方系统管理 / 新建修改</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_commoninfo_b.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body class="vscfgWin">
+    <form class="my-win-form">
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">平台名称:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">平台地址:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <input type="text" class="easyui-textbox" data-options="width:'100%'" required>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">平台网络标识:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="001" selected>外部网</option>
+                        <option value="002">内部网</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label class="requireTag">浏览器类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="001" selected>全部</option>
+                        <option value="002">chrome</option>
+                        <option value="003">firefox</option>
+                        <option value="003">ie</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="my-form-row">
+            <div class="my-form-label">
+                <label>数据类型:</label>
+            </div>
+            <div class="my-form-control">
+                <div class="my-form-input">
+                    <select class="easyui-combobox" data-options="width:'100%',panelHeight:'auto'">
+                        <option value="001" selected>公有</option>
+                        <option value="002">私有</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-form-row">
+            <div class="cfg_box">
+                <div class="cfg_box_header">
+                    <div class="col_item">
+                        <label class="my_checkbox2"><input type="checkbox">是否优先点击页面元素</label>
+                    </div>
+                    <div class="col_item">
+                        <div class="col_item">
+                            <a href="javascript:;" class="square-btn icon-add" onclick="addItem($(this))"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="cfg_box_content">
+                    <div class="cfg_box_row">
+                        <div class="col_item">
+                            <label class="lg_width"><span class="requireTag">点击元素标识:</span></label>
+                            <input type="text" class="easyui-textbox lg_width" required>
+                            <select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                                <option value="001" selected>xpath</option>
+                                <option value="002">id</option>
+                            </select>
+                        </div>
+                        <div class="col_item">
+                            <a href="javascript:;" class="square-btn minus" onclick="removeItem($(this))"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-form-row">
+            <div class="cfg_box">
+                <div class="cfg_box_header">
+                    <div class="col_item">
+                        <label class="my_checkbox2"><input type="checkbox">是否启用代理</label>
+                    </div>
+                </div>
+                <div class="cfg_box_content">
+                    <div class="cfg_box_row">
+                        <div class="col_item">
+                            <label class="lg_width"><span class="requireTag">代理名称:</span></label>
+                            <select class="easyui-combobox xl_width" data-options="panelHeight:'auto'">
+                                <option value="001" selected>192.168.1.1</option>
+                                <option value="002">id</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-form-row">
+            <div class="cfg_box">
+                <div class="cfg_box_header">
+                    <div class="col_item">
+                        <label class="my_checkbox2"><input type="checkbox">是否验证登录</label>
+                    </div>
+                </div>
+                <div class="cfg_box_content">
+                    <div class="cfg_box_row">
+                        <div class="col_item">
+                            <label class="lg_width"><span class="requireTag">用户名元素标识:</span></label>
+                            <input type="text" class="easyui-textbox lg_width" required>
+                            <select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                                <option value="001" selected>xpath</option>
+                                <option value="002">id</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="cfg_box_row">
+                        <div class="col_item">
+                            <label class="lg_width"><span class="requireTag">账号:</span></label>
+                            <input type="text" class="easyui-textbox lg_width" required>
+                        </div>
+                    </div>
+                    <div class="cfg_box_row">
+                        <div class="col_item">
+                            <label class="lg_width"><span class="requireTag">密码元素标识:</span></label>
+                            <input type="text" class="easyui-textbox lg_width" required>
+                            <select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                                <option value="001" selected>xpath</option>
+                                <option value="002">id</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="cfg_box_row">
+                        <div class="col_item">
+                            <label class="lg_width"><span class="requireTag">密码:</span></label>
+                            <input type="password" class="easyui-textbox lg_width" required>
+                        </div>
+                    </div>
+                    <div class="cfg_box_row">
+                        <div class="col_item">
+                            <label class="lg_width"><span class="requireTag">登陆按钮标识:</span></label>
+                            <input type="text" class="easyui-textbox lg_width" required>
+                            <select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                                <option value="001" selected>xpath</option>
+                                <option value="002">id</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="cfg_box">
+                        <div class="cfg_box_header">
+                            <div class="col_item">
+                                <label class="my_checkbox2"><input type="checkbox">是否在输入账号密码后运行</label>
+                            </div>
+                            <div class="col_item">
+                                <div class="col_item">
+                                    <a href="javascript:;" class="square-btn icon-add" onclick="addItem($(this))"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cfg_box_content">
+                            <div class="cfg_box_row">
+                                <div class="col_item">
+                                    <label class="lg_width"><span class="requireTag">点击元素标识:</span></label>
+                                    <input type="text" class="easyui-textbox lg_width" required>
+                                    <select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                                        <option value="001" selected>xpath</option>
+                                        <option value="002">id</option>
+                                    </select>
+                                </div>
+                                <div class="col_item">
+                                    <a href="javascript:;" class="square-btn minus" onclick="removeItem($(this))"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cfg_box">
+                        <div class="cfg_box_header">
+                            <div class="col_item">
+                                <label class="my_checkbox2"><input type="checkbox">验证嘛</label>
+                            </div>
+                        </div>
+                        <div class="cfg_box_content">
+                            <div class="cfg_box_row">
+                                <div class="col_item">
+                                    <label class="lg_width"><span class="requireTag">点击元素标识:</span></label>
+                                    <input type="text" class="easyui-textbox lg_width" required>
+                                    <select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                                        <option value="001" selected>xpath</option>
+                                        <option value="002">id</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="cfg_box_row">
+                                <div class="col_item">
+                                    <label class="lg_width"><span class="requireTag">验证码图片标识:</span></label>
+                                    <input type="text" class="easyui-textbox lg_width" required>
+                                    <select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                                        <option value="001" selected>xpath</option>
+                                        <option value="002">id</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="cfg_box_row">
+                                <div class="col_item">
+                                    <label class="lg_width"><span class="requireTag">验证码识别模型:</span></label>
+                                    <select class="easyui-combobox lg_width" data-options="panelHeight:'auto'">
+                                        <option value="001" selected>xpath</option>
+                                        <option value="002">id</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="btn-row">
+        <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-expShare'">测试</a>
+        <a href="javascript:;" class="easyui-linkbutton btn_sm primary" data-options="iconCls:'icon-ok'">提交</a>
+    </div>
+
+
+    <script>
+        // 仅用于demo使用
+        function addItem($btn) {
+            let newRow = `<div class="cfg_box_row animate_show">
+                        <div class="col_item">
+                            <label class="lg_width"><span class="requireTag">点击元素标识:</span></label>
+                            <input type="text" class="easyui-textbox lg_width" required>
+                            <select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                                <option value="001" selected>xpath</option>
+                                <option value="002">id</option>
+                            </select>
+                        </div>
+                        <div class="col_item">
+                            <a href="javascript:;" class="square-btn minus" onclick="removeItem($(this))"></a>
+                        </div>
+                    </div>`;
+            $btn.closest('.cfg_box').find('.cfg_box_content').append(newRow).find('.easyui-combobox').combobox().end().find('.easyui-textbox').textbox();
+            newRow = null;
+        }
+
+        function removeItem($btn) {
+            $btn.closest('.cfg_box_row').remove();
+            return false;
+        }
+
+        $(function() {
+            $('.cfg_box_header .my_checkbox2').each((_, ck) => {
+                $(ck).on('change', e => {
+                    if(ck.querySelector('input').checked) {
+                        $(ck).closest('.cfg_box_header').next().removeClass('hide');
+                    } else {
+                        $(ck).closest('.cfg_box_header').next().addClass('hide');
+                    }
+                })
+                
+            })
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>信息处理节点/业务配置/告警推送</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body id="alert_push" class="info_node panel_content">
+    <div class="form_row">
+        <div class="col_item">
+            <label><span class="requireTag">变量选择:</span></label>
+            <input type="text" class="easyui-textbox xl_width" data-options="iconCls:'icon-search'">
+        </div>
+    </div>
+    <div class="row_gutter"></div>
+    <div class="info_box auto_width">
+        <h3 class="title">告警变量说明</h3>
+        <div class="info_box_content">
+            <div class="example_desc">
+                <p>推送告警的变量必须为二维数组（二维表），需满足以下格式：</p>
+                <ol>
+                    <li>第一列为对象名称（例如：网元名称）</li>
+                    <li>第二列为对象结果（例如：网元判断结果）</li>
+                    <li>第三列为对象描述（例如：结果异常描述）</li>
+                </ol>
+            </div>
+            <table class="example_tab">
+                <tr>
+                    <td>MME01</td>
+                    <td>异常</td>
+                    <td>描述</td>
+                </tr>
+                <tr>
+                    <td>MME02</td>
+                    <td>异常</td>
+                    <td>描述</td>
+                </tr>
+                <tr>
+                    <td>MME03</td>
+                    <td>异常</td>
+                    <td>描述</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+
+
+
+</html>

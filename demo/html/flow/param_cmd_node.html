@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>参数配置页面</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="./var_list.css">
+</head>
+
+<body class="var_search">
+    <div class="var_type_bar">
+        <div class="form_row">
+            <div class="col_item">
+                <input type="radio" name="paramMode" id="aloneModelBtn" checked>
+                <label for="aloneModelBtn">独立设置模式</label>
+            </div>
+            <div class="col_item">
+                <input type="radio" name="paramMode" id="tableModelBtn">
+                <label for="tableModelBtn">二维表设置模式</label>
+            </div>
+            <div class="col_item">
+                <a href="javascript:;" class="easyui-linkbutton btn_sm primary"
+                   data-options="iconCls:'icon-save'">保存</a>
+                <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-cancel'">取消</a>
+            </div>
+        </div>
+    </div>
+    <!-- 独立设置模式 -->
+    <div class="var_type_box">
+        <div class="built_var">
+            <div class="form_row">
+                <div class="col_item">
+                    <label><span class="requireTag">参数:</span></label>
+                    <input type="text" class="easyui-textbox lg_width" data-options="icons:[{
+                    iconCls:'icon-search',
+                    handler: function(){openWin('var_list2.html', '变量检索页面', {widthPer:0.6})}
+                }]">
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label><span class="requireTag">参数2:</span></label>
+                    <input type="text" class="easyui-textbox lg_width" data-options="icons:[{
+                    iconCls:'icon-search',
+                    handler: function(){openWin('var_list2.html', '变量检索页面', {widthPer:0.6})}
+                }]">
+                </div>
+            </div>
+            <div class="info_box xl_width">
+                <h3 class="title">独立设置模式</h3>
+                <p>对指令每个参数进行单独设置，如:</p>
+                <ol>
+                    <li>参数1 选择变量A，参数2 选择变量B。</li>
+                    <li>变量可以是单值或一维列表</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- 二维表设置模式 -->
+    <div class="var_type_box hide">
+        <div class="built_var">
+            <div class="form_row">
+                <div class="col_item">
+                    <label><span class="requireTag">选择变量:</span></label>
+                    <input type="text" class="easyui-textbox md_width" data-options="icons:[{
+                    iconCls:'icon-search',
+                    handler: function(){openWin('var_list2.html', '变量检索页面', {widthPer:0.6})}
+                }]">
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label>对象设置:</label>
+                    <input type="text" class="easyui-textbox md_width">
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item" data-mtips="请输入数组下标，如:[1]">
+                    <label><span class="requireTag">参数1:</span></label>
+                    <input type="text" class="easyui-textbox md_width">
+                </div>
+                <div class="col_item">
+                    <label><span class="requireTag">参数名称:</span></label>
+                    <input type="text" class="easyui-textbox sm_width">
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item" data-mtips="请输入数组下标，如:[1]">
+                    <label><span class="requireTag">参数2:</span></label>
+                    <input type="text" class="easyui-textbox md_width">
+                </div>
+                <div class="col_item">
+                    <label><span class="requireTag">参数名称:</span></label>
+                    <input type="text" class="easyui-textbox sm_width">
+                </div>
+            </div>
+            <div class="info_box desc_box">
+                <h3 class="title">二维表设置模式</h3>
+                <p>一般用作私有参数传参，如变量A是一个二维表，如下所示:</p>
+                <table class="desc_tab">
+                    <thead>
+                        <tr>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>网元名称</td>
+                            <td>槽位</td>
+                            <td>端口</td>
+                        </tr>
+                        <tr>
+                            <td>MME01</td>
+                            <td>Slot1</td>
+                            <td>port1</td>
+                        </tr>
+                        <tr>
+                            <td>MME02</td>
+                            <td>Slot2</td>
+                            <td>port2</td>
+                        </tr>
+                        <tr>
+                            <td>MME03</td>
+                            <td>Slot3</td>
+                            <td>port3</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">...</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul>
+                    <li>对象设置：选中网元名称那一列，也就是填[1]。</li>
+                    <li>参数1：选中槽位那一列，也就是填[2]</li>
+                    <li>参数2：选择端口那一列，也就是[3]</li>
+                    <li>假设指令为：display &lt;slot_id&gt; &port_id&gt;</li>
+                    <li>当指令服务执行指令时则会根据对象去设置指令的参数，并且到对应对象上执行该指令</li>
+                    <li>如去MME01上执行display slot1 port1 这样的一条指令。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+
+            $('[name="paramMode"]').each(function (idx, radio) {
+                $(radio).on('change', function () {
+                    if ($(this).is(':checked')) {
+                        $('.var_type_box')
+                            .addClass('hide')
+                            .eq(idx).removeClass('hide');
+                        $.parser.parse($('.var_type_box').eq(idx));
+                    }
+                })
+            });
+
+        });
+
+    </script>
+</body>
+
+
+
+
+</html>

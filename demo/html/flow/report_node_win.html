@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程 / 报表节点 / 添加配置</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- 流程部分的UI类JS -->
+    <script src="../../common/js/my_flow.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+</head>
+
+<body>
+    <div class="flex_toolbar">
+        <form>
+            <div class="form_row">
+                <div class="col_item">
+                    <label><span class="requireTag">变量选择</span></label>
+                    <input type="text" class="easyui-textbox md_width" data-options="icons:[{
+                        iconCls:'icon-search',
+                        handler: openVarWin}]">
+                </div>
+                <div class="col_item">
+                    <a href="javascript:;" class="easyui-linkbutton btn_sm primary"
+                       data-options="iconCls:'icon-ok'">确定</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="cfg_box_group flex_row">
+        <div class="cfg_box aside_box">
+            <div class="dg_compact_wrapper">
+                <div id="tb" class="flex_toolbar">
+                    <form>
+                        <div class="form_row">
+                            <div class="col_item">
+                                <label>变量索引配置</label>
+                                <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                                   data-options="iconCls:'icon-add'" onclick="appendRow()">添加</a>
+                                <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                                   data-options="iconCls:'icon-cancel'" onclick="deleteRow()">删除</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <table id="dg"></table>
+            </div>
+            <div class="setting_div">
+                <div class="from_row">
+                    <div class="col_item">
+                        <label class="lg_width"><span class="requireTag">数据源名称:</span></label>
+                        <input type="text" class="easyui-textbox lg_width">
+                    </div>
+                </div>
+                <div class="form_row">
+                    <div class="col_item">
+                        <label class="lg_width">备注:</label>
+                        <input type="text" class="easyui-textbox lg_width" data-options="multiline:true,height:60">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cfg_box aside_box sampleData_box">
+            <div class="cfg_box_header">
+                <span class="title">样例数据</span>
+            </div>
+            <div class="cfg_box_content">
+                <textarea rows="10" class="result_textarea" data-mtips="
+                样例数据支持以下两种格式：<br>
+                1、csv格式，以制表符或逗号分隔列，如：<br>
+                张三,语文,80<br>
+                张三,数学,70<br>
+                李四,数学,90<br>
+                2、JSON格式的数组，如：<br>
+                [['成员1','网元1',80],['成员2','网元3',90]]
+                " placeholder="样例数据..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            // datagrid init
+            $('#dg').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data1.json',
+                method: 'get',
+                fit: true,
+                toolbar: '#tb',
+                pagination: true,
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    {
+                        field: 'taskid', sortable: true, width: 80, title: '变量索引',
+                        formatter: function (value, row) {
+                            return `<div class="col_item">${value}</div>`;
+                        },
+                        editor: 'numberspinner'
+                    },
+                    {
+                        field: 'taskname', sortable: true, width: 100, title: '索引说明',
+                        editor: 'textbox'
+                    },
+                    {
+                        field: 'emg', sortable: true, width: 120, title: '变量元素类型',
+                        editor: {
+                            type: 'combobox',
+                            options: {
+                                valueField: 'taskid',
+                                textField: 'emg',
+                                method: 'get',
+                                url: '../../common/data/datagrid_data2.json',
+                                panelHeight: 100,
+                                editable: false,
+                            }
+                        }
+                    },
+                    {
+                        field: 'approval', sortable: true, width: 120, title: '变量元素格式',
+                        editor: {
+                            type: 'combobox',
+                            options: {
+                                valueField: 'taskid',
+                                textField: 'emg',
+                                method: 'get',
+                                url: '../../common/data/datagrid_data2.json',
+                                panelHeight: 100,
+                                editable: false,
+                            }
+                        }
+                    },
+                    {
+                        field: 'init', sortable: true, width: 120, title: '度量类型',
+                        editor: {
+                            type: 'combobox',
+                            options: {
+                                valueField: 'init',
+                                textField: 'init',
+                                method: 'get',
+                                url: '../../common/data/datagrid_data2.json',
+                                panelHeight: 100,
+                                editable: false,
+                            }
+                        }
+                    },
+                ]],
+                onEndEidt: onEndEidt
+            });
+        });
+
+
+        var editIndex = undefined;
+        function endEditing() {
+            if (editIndex === undefined) return true;
+            if ($('#dg').datagrid('validateRow', editIndex)) {
+                $('#dg').datagrid('endEdit', editIndex);
+                editIndex = undefined;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function onEndEidt(index, row) {
+            var ed = $(this).datagrid('getEditor', {
+                index: index,
+                field: 'taskid'
+            });
+            row.taskname = $(ed.target).combobox('getText');
+        }
+
+        function appendRow() {
+            if (endEditing()) {
+                $('#dg').datagrid('appendRow', {});
+                editIndex = $('#dg').datagrid('getRows').length - 1;
+                $('#dg').datagrid('selectRow', editIndex)
+                    .datagrid('beginEdit', editIndex).parseAgain();
+            }
+        }
+
+        function deleteRow() {
+            if (editIndex != undefined) {
+                $('#dg').datagrid('cancelEdit', editIndex)
+                        .datagrid('deleteRow', editIndex);
+                editIndex = undefined;
+            }
+        }
+    </script>
+</body>
+
+</html>

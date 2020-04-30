@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程编辑器/流程运行日志/流程实例/流程节点信息</title>
+    <!-- libs -->
+    <!-- easyui material-teal样式 -->
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/datagrid-detailview.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/icon.css">
+
+    <script src="../../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../../frame/mtips/mtips.css">
+
+    <script src="../../../common/js/openWin.js"></script>
+
+    <!-- 自定义 stylesheet -->
+    <link rel="stylesheet" href="../../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../../common/css/my_flow_nodes.css">
+</head>
+
+<body>
+    <div class="easyui-tabs" data-options="fit:true">
+        <div title="节点流程日志">
+            <iframe src="history_process_info_tab1.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+        <div title="节点AI日志">
+            <iframe src="history_process_info_tab2.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+        <div title="节点变量值">
+            <iframe src="history_process_info_tab3.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+    </div>
+
+</body>
+
+</html>

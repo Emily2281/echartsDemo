@@ -1,0 +1,98 @@
+/*.icon-add {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/add.svg) no-repeat center /16px 16px;}*/
+/*.icon-advanced-query {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/advanced-query.svg) no-repeat center /16px 16px;}*/
+/*.icon-advanced-set {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/advanced-set.svg) no-repeat center /16px 16px;}*/
+/*.icon-comp-toolar {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/comp-toolar.svg) no-repeat center /16px 16px;}*/
+/*.icon-custom-comp {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/custom-comp.svg) no-repeat center /16px 16px;}*/
+/*.icon-custom-field {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/custom-field.svg) no-repeat center /16px 16px;}*/
+/*.icon-field-field {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/self-field.svg) no-repeat center /16px 16px;}*/
+/*.icon-data-handle {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/data-handle.svg) no-repeat center /16px 16px;}*/
+/*.icon-data-operate-node {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/data-operate-node.svg) no-repeat center /16px 16px;}*/
+/*.icon-del-item {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/del-item.svg) no-repeat center /16px 16px;}*/
+/*.icon-del {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/del.svg) no-repeat center /16px 16px;}*/
+/*.icon-dimension-set {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/dimension-set.svg) no-repeat center /16px 16px;}*/
+/*.icon-end {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/end.svg) no-repeat center /16px 16px;}*/
+/*.icon-field {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/field.svg) no-repeat center /16px 16px;}*/
+/*.icon-histogram {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/histogram.svg) no-repeat center /16px 16px;}*/
+/*.icon-index-set {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/index-set.svg) no-repeat center /16px 16px;}*/
+/*.icon-index {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/index.html) no-repeat center /16px 16px;}*/
+/*.icon-menu-del {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/menu-del.svg) no-repeat center /16px 16px;}*/
+/*.icon-menu-edit {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/menu-edit.svg) no-repeat center /16px 16px;}*/
+/*.icon-node-copy {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/node-copy.svg) no-repeat center /16px 16px;}*/
+/*.icon-node-del {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/node-del.svg) no-repeat center /16px 16px;}*/
+/*.icon-node-file {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/node-file.svg) no-repeat center /16px 16px;}*/
+/*.icon-node-input {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/node-input.svg) no-repeat center /16px 16px;}*/
+/*.icon-node-output {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/node-output.svg) no-repeat center /16px 16px;}*/
+/*.icon-node-table {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/node-table.svg) no-repeat center /16px 16px;}*/
+/*.icon-order-asc {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/order-asc.svg) no-repeat center /16px 16px;}*/
+/*.icon-order-desc {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/order-desc.svg) no-repeat center /16px 16px;}*/
+/*.icon-order {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/order.svg) no-repeat center /16px 16px;}*/
+/*.icon-outline-batch-count {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/outline-batch-count.svg) no-repeat center /16px 16px;}*/
+/*.icon-output-result {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/output-result.svg) no-repeat center /16px 16px;}*/
+/*.icon-output-white {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/output-white.svg) no-repeat center /16px 16px;}*/
+/*.icon-pie {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/pie.svg) no-repeat center /16px 16px;}*/
+/*.icon-real-time-flow-count {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/real-time-flow-count.svg) no-repeat center /16px 16px;}*/
+/*.icon-save {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/save.svg) no-repeat center /16px 16px;}*/
+/*.icon-shrink {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/shrink.svg) no-repeat center /16px 16px;}*/
+/*.icon-start {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/start.svg) no-repeat center /16px 16px;}*/
+/*.icon-symbol-condition {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/symbol-condition.svg) no-repeat center /16px 16px;}*/
+/*.icon-toolbar-left {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/toolbar-left.svg) no-repeat center /16px 16px;}*/
+/*.icon-toolbar-right {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/toolbar-right.svg) no-repeat center /16px 16px;}*/
+/*.icon-view-broken-line-diagram {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/view-broken-line-diagram.svg) no-repeat center /16px 16px;}*/
+/*.icon-view-table {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/view-table.svg) no-repeat center /16px 16px;}*/
+/*.icon-create-format-data {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/create-format-data.svg) no-repeat center /32px 32px;}*/
+/*.icon-other {     width: 16px;height: 16px; display: inline-block;background: url(../icon/svg/other.svg) no-repeat center /16px 16px;}*/
+.textbox-icon {
+    background-size: auto 65%;
+}
+.datebox .combo-arrow, .icon-calendar {
+    display: inline-block;background: url(../img/date.svg) no-repeat center /16px 16px;
+}
+.panel-tool-close, .icon-cancel {
+    display: inline-block;background: url(../img/close.svg) no-repeat center /16px 16px;
+}
+.pagination-prev {
+    display: inline-block;background: url(../img/arrowLeft.svg) no-repeat center /16px 16px;
+}
+.pagination-next {
+    display: inline-block;background: url(../img/arrowRight.svg) no-repeat center /16px 16px;
+}
+.icon-candidate {
+    display: inline-block;
+    margin-right: 10px;
+    background: url(../img/candidateWhite.svg) no-repeat left /20px 20px;
+}
+.icon-script-entre {
+    display: inline-block;
+    margin-left: -10px;
+    cursor: pointer;
+    background: url(../img/entre.svg) no-repeat right /16px 16px;
+}
+.icon-dateWhite {
+    background: url(../img/dateWhite.svg) no-repeat left /16px 16px;
+}
+#heightLoadLayout .layout-panel-north .panel-title {
+    display: inline-block;
+    background: url(../img/heightResult.svg) no-repeat left /20px 20px;
+}
+#heightLoadLayout .layout-panel-center .panel-title {
+    display: inline-block;
+    background: url(../img/heightLoad.svg) no-repeat left /20px 20px;
+}
+#scriptLayout .layout-panel-north .panel-title {
+    display: inline-block;
+    background: url(../img/scriptChange.svg) no-repeat left /20px 20px;
+}
+#scriptLayout .layout-panel-center .panel-title {
+    display: inline-block;
+    background: url(../img/scriptCall.svg) no-repeat left /20px 20px;
+}
+.icon-pred {
+    display: inline-block;
+    padding-left: 30px;
+    background: url(../img/predLine.svg) no-repeat left /30px 40px;
+}
+.icon-actual {
+    display: inline-block;
+    padding-left: 30px;
+    background: url(../img/actualLine.svg) no-repeat left /30px 40px;
+}

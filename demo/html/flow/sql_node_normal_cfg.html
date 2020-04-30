@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程 / SQL节点 / 普通模式-添加修改</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+    <script src="../../common/js/my_flow.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="easyui-layout" data-options="fit:true">
+    <div data-options="region:'north',border:false">
+        <div class="flex_toolbar">
+            <form>
+                <div class="form_row">
+                    <div class="col_item">
+                        <label><span class="requireTag">变量选择:</span></label>
+                        <input type="text" class="easyui-textbox md_width" data-options="icons:[{
+                            iconCls:'icon-search',
+                            handler:function(){openWin('./var_list.html','变量检索页面',{widthPer:0.8})}
+                        }]" required>
+                    </div>
+                    <div class="col_item">
+                        <label><span class="requireTag">数据库:</span></label>
+                        <select class="easyui-combobox sm_width" data-options="editable:false,panelHeight:'auto'" required>
+                            <option value="001" selected>系统001</option>
+                            <option value="002">系统002</option>
+                            <option value="003">系统003</option>
+                        </select>
+                    </div>
+                    <div class="col_item">
+                        <label><span class="requireTag">储存模式:</span></label>
+                        <select class="easyui-combobox sm_width" data-options="editable:false,panelHeight:'auto'" required>
+                            <option value="001" selected>普通</option>
+                            <option value="002">年</option>
+                            <option value="003">月</option>
+                            <option value="004">日</option>
+                        </select>
+                    </div>
+                    <div class="col_item">
+                        <a href="javascript:;" class="easyui-linkbutton btn_sm primary"
+                           data-options="iconCls:'icon-save'">保存</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div data-options="region:'center',border:false">
+        <div class="easyui-layout" data-options="fit:true" >
+            <div data-options="region:'west',width:200" title="表选择">
+                <ul id="fetchop_tree"></ul>
+            </div>
+            <div data-options="region:'center'" title="字段映射">
+                    <table id="dg"></table>
+            </div>
+    </div>
+    <script>
+        $(function () {
+            // tree init
+            $('#fetchop_tree').tree({
+                url: '../../common/data/tree_data.json',
+                method: 'get',
+            });
+
+            // datagrid init
+            $('#dg').datagrid({
+                rownumbers: true,
+                singleSelect: true,
+                url: '../../common/data/datagrid_data3.json',
+                method: 'get',
+                fit: true,
+                border: 0,
+                pagination: true,
+                columns: [[
+                    { field: 'ck', checkbox: true },
+                    { field: 'taskname', sortable: true, width: '40%', title: '字段' },
+                    {
+                        field: 'taskid', sortable: true, width: '15%', title: '值类型',
+                        formatter: function (value, row, rowIdx) {
+                            return `
+                            <div class="col_item">
+                                <select id="valueType_${rowIdx}" class="easyui-combobox valueType_select" data-options="width:'96%',editable:false,panelHeight:'auto'">
+                                    <option value="1" selected>索引</option>
+                                    <option value="2">自定义值</option>
+                                    <option value="3">变量名</option>
+                                </select>
+                            </div>`;
+                        }
+                    },
+                    {
+                        field: 'approval', sortable: true, width: '40%', title: '字段值',
+                        formatter: function (value, row, rowIdx) {
+                            return `
+                            <div class="valueType valueType_3 col_item hide">
+                                <input type="text" class="easyui-textbox" data-options="width:'96%',icons:[{iconCls:'icon-search',handler:function(){openWin('./var_list.html','变量检索页面',{width:800,height:400})}}],prompt:'变量'" required>
+                            </div>
+                            <div class="valueType valueType_2 col_item hide">
+                                <input type="text" class="easyui-textbox" data-options="width:'96%'" required>
+                            </div>
+                            <div class="valueType valueType_1 col_item">
+                                <input type="text" class="easyui-numberspinner" data-options="width:'96%'" required>
+                            </div>`;
+                        }
+                    },
+                ]],
+                onLoadSuccess: function (data) {
+                    $('.valueType_select').combobox({
+                        onChange: function (newValue) {
+                            $(this).closest('td').next('td')
+                                .find('.valueType').addClass('hide').end()
+                                .find('.valueType_' + newValue).removeClass('hide').end()
+                                .parseAgain();
+                        }
+                    });
+                    $('.easyui-numberspinner').numberspinner();
+                },
+            });
+
+        });
+
+
+    </script>
+</body>
+
+
+
+
+</html>

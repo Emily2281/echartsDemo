@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程编辑器/流程运行日志</title>
+    <!-- libs -->
+    <!-- easyui material-teal样式 -->
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/datagrid-detailview.js"></script>
+    <script src="../../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+    <link rel="stylesheet" href="../../../frame/jquery-easyui-1.8.3/themes/icon.css">
+
+    <script src="../../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../../frame/mtips/mtips.css">
+
+    <script src="../../../common/js/openWin.js"></script>
+
+    <!-- 自定义 stylesheet -->
+    <link rel="stylesheet" href="../../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../../common/css/my.icons.css">
+</head>
+
+<body>
+<div id="tb" class="flex_toolbar">
+    <form>
+        <div class="form_row">
+            <div class="col_item">
+                <label>开始时间: </label><input type="text" class="easyui-datetimebox md_width">
+            </div>
+            <div class="col_item">
+                <label>结束时间: </label><input type="text" class="easyui-datetimebox md_width">
+            </div>
+            <div class="col_item">
+                <label>流程名称: </label><input type="text" class="easyui-textbox sm_width">
+            </div>
+            <div class="col_item">
+                <label>运行状态:</label><select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                <option value="0">--请选择--</option>
+                <option value="1">审批中</option>
+                <option value="2">审批通过</option>
+                <option value="3">审批不通过</option>
+                <option value="4">已撤销</option>
+                <option value="5">超时关闭</option>
+            </select>
+            </div>
+            <div class="col_item">
+                <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                   data-options="iconCls:'icon-search-primary'">查询</a>
+                <a href="javascript:;" class="easyui-linkbutton btn_sm"
+                   data-options="iconCls:'icon-export'">导出</a>
+            </div>
+        </div>
+    </form>
+</div>
+<table id="dg"></table>
+
+<!--------------------------- 临时使用的JS ------------------------------>
+<script>
+    $(function () {
+        // data-grid init
+        $('#dg').datagrid({
+            rownumbers: true,
+            singleSelect: true,
+            url: '../../../common/data/datagrid_data3.json',
+            method: 'get',
+            fit: true,
+            pagination: true,
+            toolbar: '#tb',
+            columns: [[
+                { field: 'taskname', sortable: true, width: 200, title: '流程名称' },
+                { field: 'ck', align: 'center', width: 200, title: '运行信息' },
+                { field: 'taskid', sortable: true, width: 200, title: '运行状态' },
+                { field: 'starttime', sortable: true, width: 200, title: '运行开始时间' },
+                { field: 'endtime', sortable: true, width: 200, title: '运行结束时间' },
+                { field: 'ck1', sortable: true, width: 150, title: '报表预览' },
+                { field: 'ck2', sortable: true, width: 150, title: '参数预览' },
+                {
+                    field: 'opt', width: 260, align: 'center', title: '操作',
+                    formatter: function (value) {
+                        return `
+                                <a href="javascript:;" class="dg_btn bg_normal" onclick="openWin('showProcessLog.html','实时日志',{max:true})">流程日志</a>
+                                <a href="javascript:;" class="dg_btn bg_teal" onclick="openWin('queryProcessHistoryInfoWin.html','指令日志',{max:true})">指令日志</a>
+                                <a href="javascript:;" class="dg_btn bg_danger">重新运行</a>`;
+                    }
+                },
+                { field: 'approval', align: 'center', sortable: true, width: 100, title: '归属名称' },
+                { field: 'starttime', align: 'center', sortable: true, width: 100, title: '领域名称' },
+                { field: 'approval', align: 'center', sortable: true, width: 100, title: '触发人' },
+            ]],
+            onDblClickRow: function(idx, row) {
+                openWin('history_process_tab.html', '流程实例', {max:true});
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

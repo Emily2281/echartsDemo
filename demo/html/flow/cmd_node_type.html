@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程/指令节点/业务配置/网元类型-新增</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+</head>
+
+<body class="cmd_node_win">
+    <div id="tb" class="flex_toolbar">
+        <form>
+            <div class="form_row">
+                <div class="col_item">
+                    <label class="md_width"><span class="requireTag">层级:</span></label>
+                    <select type="text" class="easyui-combotree md_width"
+                    data-options="require:true, prompt:'请选择层级信息...',url: '../../common/data/tree_data.json',lines:true,multiple:true, method:'get'"></select>
+                </div>
+                <div class="col_item">
+                    <label><span class="requireTag">成员名称:</span></label>
+                    <input type="text" class="easyui-textbox md_width">
+                </div>
+                <div class="col_item">
+                    <label><span class="requireTag">状态:</span></label>
+                    <select class="easyui-combobox sm_width" panelHeight="auto">
+                        <option value="0" selected>选项一</option>
+                        <option value="1">选项二</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label class="md_width">层级成员个数: </label><span class="detail_num" id="levelMemberCnt">(40)<a href="javascript:;" class="detailLink">详细信息</a></span>
+                </div>
+            </div>
+            <div class="row_gutter_line"></div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label class="md_width"><span class="requireTag">网元类型:</span></label>
+                    <select class="easyui-combobox md_width" data-options="panelHeight:'auto'">
+                        <option value="0">选项一</option>
+                        <option value="1">选项二</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <label><span class="requireTag">厂家:</span></label>
+                    <select class="easyui-combobox md_width" data-options="panelHeight:'auto'">
+                        <option value="0">选项一</option>
+                        <option value="1">选项二</option>
+                    </select>
+                </div>
+                <div class="col_item">
+                    <label><span class="requireTag">设备型号:</span></label>
+                    <select class="easyui-combobox sm_width" data-options="panelHeight:'auto'">
+                        <option value="0">选项一</option>
+                        <option value="1">选项二</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form_row">
+                <div class="col_item">
+                    <label class="md_width">网元个数: </label><span class="detail_num" id="netUnitCnt">(40)<a href="javascript:;" class="detailLink">详细信息</a></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table id="dg"></table>
+    <div class="btn-row">
+        <a href="javascript:;" class="easyui-linkbutton primary" data-options="iconCls:'icon-ok'">提交</a>
+        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+    </div>
+</body>
+<script>
+    $(function () {
+        // datagrid init
+        $('#dg').datagrid({
+            rownumbers: true,
+            singleSelect: true,
+            url: '../../common/data/datagrid_data3.json',
+            method: 'get',
+            fit: true,
+            toolbar: '#tb',
+            pagination: true,
+            columns: [[
+                { field: 'ck', checkbox: true },
+                { field: 'taskname', sortable: true, width: 200, title: '指令名称' },
+                { field: 'taskid', sortable: true, width: 200, title: '解析模版' },
+                { field: 'approval', sortable: true, width: 100, title: '厂家' },
+                { field: 'emg', sortable: true, width: 200, title: '运行指令' },
+                { field: 'status', align: 'center', sortable: true, width: 200, title: '是否启用' },
+                { field: 'init', align: 'center', sortable: true, width: 200, title: '参数配置' },
+            ]],
+        });
+
+        // 详细信息
+        $('.detailLink').on('click', e => {
+            e.preventDefault();
+            openWin('./datagrid_table.html', '详细信息');
+        })
+    });
+</script>
+
+</html>

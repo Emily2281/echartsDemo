@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心 / 我的配置</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="pc.css">
+</head>
+
+<body class="easyui-layout" data-options="fit:true">
+    <div title="我的配置" data-options="region:'west',width:200" class="setting_aside">
+        <div class="setting_box all_settings_box">
+            <div class="set_box_header">
+                <span class="title">全部配置</span>
+                <div class="box_tools">
+                    <a href="javascript:;" class="icon-settings" data-mtips="默认展示配置" onclick="openDefaultCfg()"></a>
+                    <a href="javascript:;" class="collapsed-btn"></a>
+                </div>
+            </div>
+            <div class="set_box_content">
+                <ul class="settings_list">
+                    <li><a class="icon-item PROCESS" href="javascript:;">流程配置</a></li>
+                    <li><a class="icon-item CMD" href="javascript:;">指令集</a></li>
+                    <li><a class="icon-item CMDTMPL" href="javascript:;">指令模版</a></li>
+                    <li><a class="icon-item NETUNIT" href="javascript:;">网元</a></li>
+                    <li><a class="icon-item TASKTMPL" href="javascript:;">任务模版</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="setting_box classify_box">
+            <div class="set_box_header">
+                <span class="title">分类</span>
+                <div class="box_tools">
+                    <a href="javascript:;" class="icon-tip" data-mtips="分类菜单右键操作"></a>
+                </div>
+            </div>
+            <div class="set_box_content">
+                <ul id="classifyTree"></ul>
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'center'">
+        <div class="easyui-tabs" data-options="fit:true,border:false">
+            <div title="任务模版" data-options="closable:true">
+                <iframe data-src="pc_templ.html" frameborder="0" class="tab_ifr"></iframe>
+            </div>
+            <div title="流程配置" data-options="closable:true">
+                <iframe data-src="pc_process.html" frameborder="0" class="tab_ifr"></iframe>
+            </div>
+            <div title="指令集" data-options="closable:true">
+                <iframe data-src="pc_cmd.html" frameborder="0" class="tab_ifr"></iframe>
+            </div>
+            <div title="指令模版" data-options="closable:true">
+                <iframe data-src="pc_cmdTempl.html" frameborder="0" class="tab_ifr"></iframe>
+            </div>
+            <div title="网元" data-options="closable:true">
+                <iframe data-src="pc_netunit.html" frameborder="0" class="tab_ifr"></iframe>
+            </div>
+        </div>
+    </div>
+    <div title="详细信息" data-options="region:'east',width:200,collapsed:true,expandMode:'float',tools:'#tbDetailCfg'">
+        <div class="info_box">
+            <table class="info_table" id="detailInfoTable">
+                <caption class="info_img"><i class="icon-filetext"></i></caption>
+                <tbody>
+                    <tr>
+                        <td class="tableText">指令名称</td>
+                        <td class="tableValue">20191224</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">指令</td>
+                        <td class="tableValue">free&nbsp;-m</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">操作</td>
+                        <td class="tableValue"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">审批</td>
+                        <td class="tableValue"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">启用</td>
+                        <td class="tableValue">是</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">高危指令</td>
+                        <td class="tableValue">否</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">公有指令</td>
+                        <td class="tableValue">是</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">网元分类</td>
+                        <td class="tableValue">BSC</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">登录模式</td>
+                        <td class="tableValue">普通模式</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">指令等待超时(秒)</td>
+                        <td class="tableValue">5</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">指令翻页符</td>
+                        <td class="tableValue"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">隐藏输入指令</td>
+                        <td class="tableValue">否</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">隐藏指令返回</td>
+                        <td class="tableValue"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">创建者</td>
+                        <td class="tableValue">厂家运维</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">指令用途</td>
+                        <td class="tableValue">1</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">最近修改人</td>
+                        <td class="tableValue">厂家运维</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">最近修改时间</td>
+                        <td class="tableValue">2019-12-24 17:12:01</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">分类路径</td>
+                        <td class="tableValue">/2G/BSC</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">厂家</td>
+                        <td class="tableValue">华为</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">设备型号</td>
+                        <td class="tableValue">BSC6900</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">指令来源</td>
+                        <td class="tableValue">本地创建</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">经验下载</td>
+                        <td class="tableValue"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">个性指令</td>
+                        <td class="tableValue">否</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">说明</td>
+                        <td class="tableValue"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">审批时间</td>
+                        <td class="tableValue"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">创建时间</td>
+                        <td class="tableValue">2019-12-24 16:52:32</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">原创人</td>
+                        <td class="tableValue">厂家运维</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">原创时间</td>
+                        <td class="tableValue">2019-12-24 16:52:32</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">归属名称</td>
+                        <td class="tableValue">广州市</td>
+                    </tr>
+                    <tr>
+                        <td class="tableText">领域名称</td>
+                        <td class="tableValue">核心网</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 默认展示设置 -->
+    <div class="default_cfg_box">
+        <h3 class="title">默认展示设置</h3>
+        <a href="javascript:;" class="closeBtn icon-cancel"></a>
+        <div class="form_row">
+            <div class="col_item"><input type="radio" name="cfgTypeRadio" id="PROCESS" checked><label
+                       for="PROCESS">流程配置</label></div>
+        </div>
+        <div class="form_row">
+            <div class="col_item"><input type="radio" name="cfgTypeRadio" id="CMD"><label for="CMD">指令值</label></div>
+        </div>
+        <div class="form_row">
+            <div class="col_item"><input type="radio" name="cfgTypeRadio" id="CMDTMPL"><label for="CMDTMPL">指令模版</label>
+            </div>
+        </div>
+        <div class="form_row">
+            <div class="col_item"><input type="radio" name="cfgTypeRadio" id="NETUNIT"><label for="NETUNIT">网元</label>
+            </div>
+        </div>
+        <div class="form_row">
+            <div class="col_item"><input type="radio" name="cfgTypeRadio" id="TASKTMPL"><label
+                       for="TASKTMPL">任务模版</label></div>
+        </div>
+        <div class="btn-row">
+            <a href="javascript:;" class="easyui-linkbutton btn_sm" data-options="iconCls:'icon-ok'">确定</a>
+        </div>
+    </div>
+    <!-- 详细信息展示配置 -->
+    <div id="tbDetailCfg">
+        <a href="javascript:;" class="icon-settings" data-mtips="详细信息展示配置" onclick="openDetailCfg()"></a>
+    </div>
+    <!-- 右键菜单 -->
+    <div id="mm" class="easyui-menu" data-options="onClick:menuHandler">
+        <div onclick="openClassifyWin()" data-options="iconCls:'icon-add'">新增同级分类</div>
+        <div onclick="openClassifyWin()" data-options="iconCls:'icon-add'">新增下级分类</div>
+        <div onclick="openClassifyWin()" data-options="iconCls:'icon-edit2'">修改所选分类</div>
+        <div data-options="iconCls:'icon-cancel'">删除所选分类</div>
+        <div class="menu-sep"></div>
+        <div data-options="iconCls:'icon-lock'">启用拖拽功能</div>
+        <div class="menu-sep"></div>
+        <div onclick="openDataChoose()" data-options="iconCls:'icon-manage'">数据分配</div>
+    </div>
+    <!-- 新增/修改分类window -->
+    <div id="newClassify" class="classify_win hide">
+        <div class="form_row">
+            <div class="col_item">
+                <label>分类名称:</label>
+                <input type="text" class="easyui-textbox md_width" data-options="height:24">
+            </div>
+        </div>
+        <div class="btn-row">
+            <a href="javascript:;" class="easyui-linkbutton btn_sm primary" data-options="iconCls:'icon-save'">保存</a>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            // 右键菜单隐藏
+            $('#mm').menu('hide');
+
+            // 左侧树
+            $('#classifyTree').tree({
+                url: '../../common/data/tree_data.json',
+                method: 'get',
+                onContextMenu: function (e, node) {
+                    e.preventDefault();
+                    $('#classifyTree').tree('select', node.target);
+                    $('#mm').menu('show', {
+                        left: e.pageX,
+                        top: e.pageY
+                    });
+                }
+            });
+
+            // 左侧折叠按钮
+            $('.collapsed-btn').on('click', function (e) {
+                $(e.target).closest('.setting_box').toggleClass('collapsed');
+            });
+
+            // 打开默认的tab
+            var defaultIdx = 0, $defaultIfrm, $defaultSrc;
+            if ($('.easyui-tabs').length > 0) {
+                $defaultIfr = $('.easyui-tabs').tabs('getTab', defaultIdx).children('iframe');
+                $defaultSrc = $defaultIfr.data('src');
+                $defaultIfr.attr('src', $defaultSrc);
+            }
+            // 打开tab的时候才加载下面的iframe
+            $('.easyui-tabs').tabs({
+                onSelect: function (tabTitle, tabIdx) {
+                    var $ifr = $('.easyui-tabs').tabs('getTab', tabIdx).find('iframe'),
+                        src = $ifr.data('src');
+                    if (!$ifr.attr('src')) {
+                        $ifr.attr('src', src);
+                    }
+                }
+            })
+
+        });
+
+        function openDetailCfg() {
+            openWin('detailCfg.html', '详细信息展示配置', {widthPer:0.8});
+        }
+
+        function openDefaultCfg() {
+            $('.default_cfg_box').addClass('show').on('click', '.closeBtn', function () {
+                $('.default_cfg_box').removeClass('show').off('click');
+            })
+        }
+
+        function openClassifyWin() {
+            $('#newClassify').removeClass('hide').window({
+                width: 400,
+                height: 140,
+                modal: true,
+                title: '新增分类',
+                collapsible: false,
+                minimizable: false,
+                maximizable: false
+            });
+        }
+
+        function openDataChoose() {
+            openWin('dataChoose.html', '数据分配', {widthPer: 0.8});
+        }
+
+        function menuHandler(item) {
+            let target = item.target;
+            // 切换开关图标
+            if (item.iconCls === 'icon-lock') {
+                $('#mm').menu('setIcon', {
+                    target: target,
+                    iconCls: 'icon-lock-opened'
+                })
+            } else if (item.iconCls === 'icon-lock-opened') {
+                $('#mm').menu('setIcon', {
+                    target: target,
+                    iconCls: 'icon-lock'
+                })
+            }
+        }
+
+    </script>
+</body>
+
+</html>

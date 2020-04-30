@@ -1,0 +1,102 @@
+html, body, #map {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+.pg-box {
+    background: #fff;
+    padding: 15px;
+    z-index: 999;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 23%;
+}
+.search-form {
+    position: relative;
+    margin: 15px auto;
+}
+.search-form .search-btn {
+    position: absolute;
+    right: 20px;
+    top: -3px;
+    transform: translate(50%, 50%);
+    cursor: pointer;
+}
+.search-form .search-btn i {
+    font-size: 20px;
+}
+.pg-box ul li {
+    padding: 10px;
+    margin: 8px auto;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.pg-box #page {
+    margin: 0 auto;
+    text-align: center;
+}
+.top-box {
+    background: #fff;
+    padding-top: 15px;
+    padding-right: 25px;
+    z-index: 999;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    /*width: 1200px;*/
+}
+.top-box .layui-form-label {
+    width: 40px;
+}
+
+/* 修改百度地图样式 start */
+/*地图标题*/
+.BMap_bubble_title {
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+    text-align:left;
+    padding-left:5px;
+    padding-top:5px;
+    border-bottom:1px solid gray;
+    background-color:#0066b3;
+}
+/* 消息内容 */
+.BMap_bubble_content {
+    background-color:white;
+    padding-left:5px;
+    padding-top:5px;
+    padding-bottom:10px;
+}
+/*!* 内容 *!
+.BMap_pop div:nth-child(9) {
+    top:35px !important;
+    border-radius:7px;
+}*/
+.BMap_pop img {
+    display: none;
+}
+/* 左上角删除按键 */
+.BMap_pop img:nth-child(1) {
+    display: inline-block;
+}
+.BMap_top {
+    display:none;
+}
+.BMap_bottom {
+    display:none;
+}
+.BMap_center {
+    display:none;
+}
+/* 隐藏边角 */
+.BMap_pop div:nth-child(1) div,
+.BMap_pop div:nth-child(3),
+.BMap_pop div:nth-child(5),
+.BMap_pop div:nth-child(7) {
+    display:none;
+}
+/* 修改百度地图样式 end */
+

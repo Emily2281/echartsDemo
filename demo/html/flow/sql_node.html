@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程 / SQL节点</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- 流程部分的UI类JS -->
+    <script src="../../common/js/my_flow.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+</head>
+
+<body>
+    <div class="easyui-tabs" data-options="fit:true">
+        <!-- =================== 业务配置 =================== -->
+        <div title="业务配置">
+            <iframe data-src="sql_node_tab1.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+        <!-- =================== 取数配置 =================== -->
+        <div title="取数配置">
+            <iframe data-src="cmd_node_tab2.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+        <!-- =================== 控制配置 =================== -->
+        <div title="控制配置">
+            <iframe data-src="node_tab3.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+        <!-- =================== 操作配置 =================== -->
+        <div title="操作配置">
+            <iframe data-src="node_tab4.html" frameborder="0" class="tab_ifr"></iframe>
+        </div>
+
+    </div>
+</body>
+</html>

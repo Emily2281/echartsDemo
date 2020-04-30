@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程 / 可视化操作模拟节点 / 业务配置 / 循环</title>
+    <!-- easyui js 文件 -->
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/jquery.easyui.min.js"></script>
+    <script src="../../frame/jquery-easyui-1.8.3/locale/easyui-lang-zh_CN.js"></script>
+
+    <!-- 打开窗口 -->
+    <script src="../../common/js/openWin.js"></script>
+
+    <!-- easyui 自带的 material-teal 样式  -->
+    <link rel="stylesheet" href="../../frame/jquery-easyui-1.8.3/themes/material-teal/easyui.css">
+
+    <!-- mtips -->
+    <script src="../../frame/mtips/mtips.js"></script>
+    <link rel="stylesheet" href="../../frame/mtips/mtips.css">
+
+
+    <!-- 自定义 样式文件 -->
+    <link rel="stylesheet" href="../../common/css/my.base.css">
+    <link rel="stylesheet" href="../../common/css/my.icons.css">
+
+    <link rel="stylesheet" href="../../common/css/my_flow_nodes.css">
+</head>
+
+<body class="datafetch_page">
+    <div class="cfg_box_row">
+        <div class="col_item">
+            <label for="listBtn_1"><input type="radio" name="looptype" id="listBtn_1" value="1"
+                       checked>变量列表</label>
+        </div>
+        <div class="col_item">
+            <label for="listBtn_2"><input type="radio" name="looptype" id="listBtn_2" value="2">次数</label>
+        </div>
+        <div class="col_item">
+            <label for="listBtn_3"><input type="radio" name="looptype" id="listBtn_3" value="3">条件</label>
+        </div>
+        <div class="col_item">
+            <label for="listBtn_4"><input type="radio" name="looptype" id="listBtn_4" value="4">步骤</label>
+        </div>
+    </div>
+    <div class="cfg_box_row" data-looptype="1">
+        <div class="col_item">
+            <label class="lg_width"><span class="requireTag">变量选择:</span></label>
+            <input type="text" class="easyui-textbox lg_width" data-options="icons:[{
+                            iconCls:'icon-search',
+                            handler:function(){openWin('var_list.html','变量检索页面',{max:true});}}]">
+        </div>
+    </div>
+    <div class="cfg_box_row" data-looptype="2">
+        <div class="col_item">
+            <label class="lg_width"><span class="requireTag">循环次数:</span></label>
+            <input type="text" class="easyui-textbox lg_width" data-options="prompt:'支持变量引用'">
+        </div>
+        <div class="col_item">
+            <i class="help help_mtips"
+               data-mtips="1、先判断循环次数，次数必须大于0；<br/>2、循环变量名赋值；<br/>3、判断跳至下一轮条件，如果满足，则跳至下一轮循环；<br/>4、执行循环体内容；<br/>5、判断结束循环条件，如果满足，则结束循环。">?</i>
+        </div>
+    </div>
+    <div class="cfg_box_row" data-looptype="3">
+        <div class="col_item">
+            <label class="lg_width"><span class="requireTag">循环条件:</span></label>
+            <input type="text" class="easyui-textbox lg_width" data-options="prompt:'支持变量引用'">
+        </div>
+        <div class="col_item">
+            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+               data-options="iconCls:'icon-edit'"
+               onclick="openWin('add_datafetch_node.html','组件操作配置',{autoSize:true})">修改</a>
+            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+               data-options="iconCls:'icon-clear'">清空</a>
+        </div>
+        <div class="col_item">
+            <i class="help help_mtips"
+               data-mtips="1、先判断循环条件，如果满足，则开始循环；<br/>2、判断跳至下一轮条件，如果满足，则跳至下一轮循环；<br/>3、执行循环体内容；<br/>4、判断结束循环条件，如果满足，则结束循环。">?</i>
+        </div>
+    </div>
+    <div class="cfg_box_row" data-looptype="4">
+        <div class="col_item">
+            <label class="lg_width"><span class="requireTag">步骤选择:</span></label>
+            <input type="text" class="easyui-textbox lg_width" data-options="icons:[{
+                        iconCls:'icon-search',
+                        handler:function(){}}]">
+        </div>
+        <div class="col_item">
+            <i class="help help_mtips" data-mtips="只可选择'动作'值为'取数'的元素">?</i>
+        </div>
+    </div>
+    <div class="cfg_box_row" data-looptype="1 2">
+        <div class="col_item">
+            <label class="lg_width"><span class="requireTag">循环行变量名称:</span></label>
+            <input type="text" class="easyui-textbox lg_width">
+        </div>
+    </div>
+    <div class="cfg_box_row" data-looptype="4">
+        <div class="col_item">
+            <label class="lg_width"><span class="requireTag">循环变量名称:</span></label>
+            <input type="text" class="easyui-textbox lg_width">
+        </div>
+    </div>
+    <div class="cfg_box_row" data-looptype="1 2 4">
+        <div class="col_item">
+            <label class="lg_width"><span class="requireTag">赋值方式:</span></label>
+            <select class="easyui-combobox lg_width" data-options="editable:false,panelHeight:'auto'">
+                <option value="replace" selected>替换</option>
+                <option value="add">追加</option>
+            </select>
+        </div>
+    </div>
+    <div class="cfg_box_row" data-looptype="2 3">
+        <div class="col_item">
+            <label class="lg_width">跳至下一轮条件:</label>
+            <input type="text" class="easyui-textbox lg_width">
+        </div>
+        <div class="col_item">
+            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+               data-options="iconCls:'icon-edit'"
+               onclick="openWin('add_datafetch_node.html','组件操作配置',{autoSize:true})">修改</a>
+            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+               data-options="iconCls:'icon-clear'">清空</a>
+        </div>
+    </div>
+    <div class="cfg_box_row" data-looptype="2 3">
+        <div class="col_item">
+            <label class="lg_width">结束循环条件:</label>
+            <input type="text" class="easyui-textbox lg_width">
+        </div>
+        <div class="col_item">
+            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+               data-options="iconCls:'icon-edit'"
+               onclick="openWin('add_datafetch_node.html','组件操作配置',{autoSize:true})">修改</a>
+            <a href="javascript:;" class="easyui-linkbutton btn_sm"
+               data-options="iconCls:'icon-clear'">清空</a>
+        </div>
+    </div>
+    <div class="row_gutter_line"></div>
+    <div class="btn-row">
+        <a href="javascript:;" class="easyui-linkbutton primary" data-options="iconCls:'icon-save'">保存</a>
+    </div>
+
+    <script>
+        $(function () {
+            // 添加循环 - 切换四种不同类型
+            $('[name="looptype"]').on('change', function (e) {
+                // type: 1-变量列表 2-次数 3-条件 4-步骤
+                var type = $(this).val();
+                $(this).closest('.cfg_box_row')
+                    .nextAll('.cfg_box_row')
+                    .addClass('hide')
+                    .filter(function (_, row) {
+                        return ('' + $(row).data('looptype')).split(' ').indexOf(type) > -1;
+                    }).removeClass('hide')
+                    .find('.easyui-textbox').textbox().end()
+                    .find('.easyui-combobox').combobox();
+            }).trigger('change');
+
+        })
+    </script>
+</body>
+
+</html>

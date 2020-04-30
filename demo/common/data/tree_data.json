@@ -1,0 +1,220 @@
+[
+    {
+        "id": 1,
+        "text": "广东省",
+        "iconCls": "icon-book",
+        "state": "closed",
+        "children": [
+            {
+                "text": "00001",
+                "iconCls": "icon-filetext",
+                "checked": true
+            },
+            {
+                "text": "File2",
+                "iconCls": "icon-filetext",
+                "checked": false
+            },
+            {
+                "text": "File3",
+                "iconCls": "icon-filetext",
+                "checked": false
+            },
+            {
+                "text": "File4",
+                "iconCls": "icon-filetext",
+                "checked": false
+            },
+            {
+                "text": "File5",
+                "iconCls": "icon-filetext",
+                "checked": false
+            },
+            {
+                "text": "广州市",
+                "iconCls": "icon-book",
+                "checked": false,
+                "children": [
+                    {
+                        "text": "000",
+                        "iconCls": "icon-filetext",
+                        "checked": true
+                    },
+                    {
+                        "text": "File2",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File3",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File4",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File5",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File6",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    }
+                ]
+            },
+            {
+                "text": "广州市",
+                "iconCls": "icon-book",
+                "checked": false,
+                "children": [
+                    {
+                        "text": "000",
+                        "iconCls": "icon-filetext",
+                        "checked": true
+                    },
+                    {
+                        "text": "File2",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File3",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File4",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File5",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File6",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    }
+                ]
+            },
+            {
+                "text": "广州市",
+                "iconCls": "icon-book",
+                "checked": false,
+                "children": [
+                    {
+                        "text": "000",
+                        "iconCls": "icon-filetext",
+                        "checked": true
+                    },
+                    {
+                        "text": "File2",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File3",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File4",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File5",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File6",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    }
+                ]
+            },
+            {
+                "text": "广州市",
+                "iconCls": "icon-book",
+                "checked": false,
+                "children": [
+                    {
+                        "text": "000",
+                        "iconCls": "icon-filetext",
+                        "checked": true
+                    },
+                    {
+                        "text": "File2",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File3",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File4",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File5",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File6",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    }
+                ]
+            },
+            {
+                "text": "广州市",
+                "iconCls": "icon-book",
+                "checked": false,
+                "children": [
+                    {
+                        "text": "000",
+                        "iconCls": "icon-filetext",
+                        "checked": true
+                    },
+                    {
+                        "text": "File2",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File3",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File4",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File5",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    },
+                    {
+                        "text": "File6",
+                        "iconCls": "icon-filetext",
+                        "checked": false
+                    }
+                ]
+            }
+        ]
+    }
+]
