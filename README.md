@@ -3,3 +3,4 @@
 demo文件夹下是各种easyui的html布局
 frame文件夹下是js的插件
 项目入口是 highLoadCellPred.html
+项目效果如图：
