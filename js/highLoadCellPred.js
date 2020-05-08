@@ -1,5 +1,8 @@
-var timeData = [],yPredData = [],yActualData = [];//X轴的数据
-var timeData = [],yPredData = [],yActualData = [];//X轴的数据
+var timeData = [],//x轴时间
+    tmpTimeData = [],
+    yPredData = [],//预测值
+    yActualData = [];//实际值
+var yPredTime = [],yActualTime = [];
 var num=0;
 $(function () {
     //初始化日期为今天
@@ -28,14 +31,18 @@ $(function () {
     })
 
 });
+
 /**
  * 初始化展示折线图
  * @param echartId
  */
 function initEcharts(echartId,index,tabIndex) {
     console.log("timeData:"+eval(timeData));
-    console.log("yActualData:"+eval(yActualData));
-    console.log("yPredData:"+eval(yPredData));
+    yActualData = buildYChartData(yActualTime,yActualData);
+    console.log("yActualDataNew---:"+eval(yActualData));
+    yPredData = buildYChartData(yPredTime,yPredData);
+    console.log("yPredDataNew---:"+eval(yPredData));
+
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById(echartId));
     let option = {
@@ -55,12 +62,12 @@ function initEcharts(echartId,index,tabIndex) {
                     selDate = new Date(selDate).getTime()-86400000;
                     date = formatDate(selDate);
                 }
-                if(firstParams){
-                    let actHtml = `<span class="icon-actual">`+firstParams.seriesName+`：`+firstParams.data+`</span> `;//实际值图标
+                if(firstParams&&firstParams.data!=undefined){
+                    let actHtml = `<span class="icon-pred">`+firstParams.seriesName+`：`+firstParams.data+`</span> `;//实际值图标
                     html = date+" "+firstParams.name+":00"+`<br>`+actHtml+`<br>`;
                 }
-                if(secParams){
-                    let predHtml = `<span class="icon-pred">`+secParams.seriesName+`：`+secParams.data+`</span>  `;//预测值图标
+                if(secParams&&secParams.data!=undefined){
+                    let predHtml = `<span class="icon-actual">`+secParams.seriesName+`：`+secParams.data+`</span>  `;//预测值图标
                     html += predHtml+`<br>`;
                 }
                 return  html;
@@ -273,10 +280,13 @@ function addTabEvents(index,rowData) {
     //折线图初始化
     yPredData = rowData.pred_max_rrc?rowData.pred_max_rrc.split(","):"";
     yActualData = rowData.max_rrc_user?rowData.max_rrc_user.split(","):"";
+    yPredTime = rowData.pred_time?rowData.pred_time.split(","):"";
+    yActualTime = rowData.data_time?rowData.data_time.split(","):"";
+
     $('#heightTab_'+index).tabs({
         onSelect:function(title,tabIndex){
             if(tabIndex==1){
-                yPredData = rowData.pred_dw_prb?rowData.pred_dw_prb.split(","):"";
+                yPredData = rowData.pred_dw_prb?rowData.pred_up_prb.split(","):"";
                 yActualData = rowData.up_prb_userate?rowData.up_prb_userate.split(","):"";
                 initEcharts("upPrbUse_"+index,index,tabIndex);//上行PRB利用率
             }else if(tabIndex==2){
@@ -366,36 +376,41 @@ function initRowDatas(data) {
  * @param confirmStatus
  */
 function updateStatus(index,confirmStatus) {
-    let formJson = $("#highForm_"+index).toJSON();
-    let rowData = JSON.parse(formJson.rowData);
-    formJson.confirm_status = confirmStatus;
-    formJson.pred_data_time = rowData.pred_data_time;
-    formJson.pred_enodeb_cell = rowData.pred_enodeb_cell;
-    formJson.pred_start_time = rowData.pred_start_time;
-    formJson.pred_end_time = rowData.pred_end_time;
-    let needNearOffset = $("#needNearOffset").val();
-    formJson.near_cell_qoffset = needNearOffset=='no'||rowData.near_cell_qoffset?'':'2';
-    formJson.near_cell_individualoffset = needNearOffset=='no'||rowData.near_cell_individualoffset?'':'2';
-    console.log(formJson);
-    MaskUtil.mask("数据提交中...");
-    $.post(
-        basePath + "highLoadCellPredResult/saveHighResult.do",
-        formJson,
-        function (result) {
-            MaskUtil.unmask();
-            result = JSON.parse(result);
-            if(result.success){
-                rowData.confirm_status = confirmStatus;
-                rowData.enodeb_cell_qoffset = formJson.enodeb_cell_qoffset;
-                rowData.enodeb_cell_individualoffset = formJson.enodeb_cell_individualoffset;
-                $("#heightLeft_"+index).html('');
-                let heightLeftHtml = initHighLeftData(index,rowData);
-                $("#heightLeft_"+index).append(heightLeftHtml)
-                $("#rowData_"+index).val(JSON.stringify(rowData));
-            }else {
-                alert(result.msg);
-            }
-        });
+    let statusText = confirmStatus=='1'?"接受":"拒绝";
+    confirm("确定要"+statusText+"？<br><font size='3' color='red'>注意：一旦确认状态后，小区的调整参数不能再修改！</font>",null,function (r) {
+        if(r){
+            let formJson = $("#highForm_"+index).toJSON();
+            let rowData = JSON.parse(formJson.rowData);
+            formJson.confirm_status = confirmStatus;
+            formJson.pred_data_time = rowData.pred_data_time;
+            formJson.pred_enodeb_cell = rowData.pred_enodeb_cell;
+            formJson.pred_start_time = rowData.pred_start_time;
+            formJson.pred_end_time = rowData.pred_end_time;
+            let needNearOffset = $("#needNearOffset").val();
+            formJson.near_cell_qoffset = needNearOffset=='no'||rowData.near_cell_qoffset?'':'2';
+            formJson.near_cell_individualoffset = needNearOffset=='no'||rowData.near_cell_individualoffset?'':'2';
+            console.log(formJson);
+            MaskUtil.mask("数据提交中...");
+            $.post(
+                basePath + "highLoadCellPredResult/saveHighResult.do",
+                formJson,
+                function (result) {
+                    MaskUtil.unmask();
+                    result = JSON.parse(result);
+                    if(result.success){
+                        rowData.confirm_status = confirmStatus;
+                        rowData.enodeb_cell_qoffset = formJson.enodeb_cell_qoffset;
+                        rowData.enodeb_cell_individualoffset = formJson.enodeb_cell_individualoffset;
+                        $("#heightLeft_"+index).html('');
+                        let heightLeftHtml = initHighLeftData(index,rowData);
+                        $("#heightLeft_"+index).append(heightLeftHtml)
+                        $("#rowData_"+index).val(JSON.stringify(rowData));
+                    }else {
+                        alert(result.msg);
+                    }
+                });
+        }
+    });
 }
 //高危小区信息导出
 function exportHighinfo() {

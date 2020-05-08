@@ -318,12 +318,33 @@ function createXTimeData(inputDate) {
             if (i >= 10) {//两位数
                 // index =  dateStr+i + ":00";
                 index =  i ;
+                tmpTimeData.push(dateStr.substring(8,10)+i);
                 timeData.push(index)
             } else {
                 // index = dateStr+" 0" + i + ":00";
-                index = " 0" + i ;
+                index = "0" + i ;
+                tmpTimeData.push(dateStr.substring(8,10)+"0" + i);
                 timeData.push(index)
             }
         }
     }
+}
+
+/**
+ * 设置x轴与y轴对应
+ * @param yTime
+ * @param yData
+ * @return {any[]} 新y轴数组数据
+ */
+function buildYChartData(yTime,yData) {
+    let yNew = new Array(48);
+    //设置x轴与y轴对应
+    $.each(yTime,function (i,v) {
+        let yPart = v.substring(8,10);
+        let yT = v.substring(11,13);
+        let yKey = yPart+yT;
+        let index = $.inArray(yKey,tmpTimeData);
+        yNew[index] = yData[i];
+    })
+    return yNew;
 }

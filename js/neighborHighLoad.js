@@ -1,4 +1,8 @@
-var timeData = [],yPredData = [],yActualData = [];//X轴的数据
+var timeData = [],//x轴时间
+    tmpTimeData = [],
+    yPredData = [],//预测值
+    yActualData = [];//实际值
+var yPredTime = [],yActualTime = [];
 var num=0;
 let params = getUrlParams();
 $(function () {
@@ -35,6 +39,10 @@ function getNearTopChart() {
 }
 function initEcharts(echartId) {
     console.log("timeData:"+eval(timeData));
+    yActualData = buildYChartData(yActualTime,yActualData);
+    console.log("yActualDataNew---:"+eval(yActualData));
+    yPredData = buildYChartData(yPredTime,yPredData);
+    console.log("yPredDataNew---:"+eval(yPredData));
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById(echartId));
     let option = {
@@ -55,12 +63,12 @@ function initEcharts(echartId) {
                     date = formatDate(selDate);
                 }
 
-                if(firstParams){
-                    let actHtml = `<span class="icon-actual">`+firstParams.seriesName+`：`+firstParams.data+`</span> `;//实际值图标
+                if(firstParams&&firstParams.data!=undefined){
+                    let actHtml = `<span class="icon-pred">`+firstParams.seriesName+`：`+firstParams.data+`</span> `;//实际值图标
                     html = date+" "+firstParams.name+":00"+`<br>`+actHtml+`<br>`;
                 }
-                if(secParams){
-                    let predHtml = `<span class="icon-pred">`+secParams.seriesName+`：`+secParams.data+`</span>  `;//预测值图标
+                if(secParams&&secParams.data!=undefined){
+                    let predHtml = `<span class="icon-actual">`+secParams.seriesName+`：`+secParams.data+`</span>  `;//预测值图标
                     html += predHtml+`<br>`;
                 }
                 return  html;
@@ -175,7 +183,8 @@ function addTopChartRow(index,rowData) {
         yPredData = rowData.pred_max_rrc?rowData.pred_max_rrc.split(","):"";
         yActualData = rowData.max_rrc_user?rowData.max_rrc_user.split(","):"";
     }
-
+    yPredTime = rowData.pred_time?rowData.pred_time.split(","):"";
+    yActualTime = rowData.data_time?rowData.data_time.split(","):"";
     initEcharts("echart_"+num);
     rowHtml = null;
 }
